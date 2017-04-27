@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/style.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script language="JavaScript" type="text/javascript" src="js/script.js"></script>
+</head>
+
+<body>
+    <div id="infoG">
+        <form id="formClient">
+            <h2>Information générale du client</h2>
+            <div>
+                <input id="nom" type="text" placeholder="nom"><span class="incoText" id="erreurNom">Nom incorrect</span></br>
+            </div>
+            <div>
+                <input id="prenom" type="text" placeholder="prenom"><span class="incoText" id="erreurPre">Prénom incorrect</span></br>
+            </div>
+            <div>
+                <input id="date" type="text" placeholder="date de dépôt jj/mm/yyyy"><span class="incoText" id="erreurDate">Date Incorrecte</span></br>
+            </div>
+            <input id="boutonOK" type="button" value="Enregistrer">
+        </form>
+    </div>
+    <div id="recap">
+        <h4>Client</h4>
+        <tr id="listRecap">
+        </tr>
+    </div>
+</body>
+
+</html>

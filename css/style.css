@@ -1,0 +1,17 @@
+#infoG {
+    width: 300px;
+    float: left;
+    margin-left: 20%;
+}
+
+#recap {
+    width: 300px;
+    float: right;
+    margin-right: 20%;
+    font-size: 25px;
+}
+
+.incoText {
+    color: red;
+    margin-left: 20px;
+}

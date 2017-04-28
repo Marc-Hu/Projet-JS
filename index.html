@@ -25,20 +25,67 @@
             </div>
             <input id="boutonOK" type="button" value="Enregistrer">
         </form>
-        <div id="choixServices">
-            <span id="boutonOurlet">+ Ourlet</span>
-            <div id="ourlet">
-                <div>
-                    <span>Ourlet Pantalon</span>
-                    <input id="ourletPantalon" type="text" placeholder="longueur(cm)">
+        </br>
+        <div id="services">
+            <span class="boutonDev" style="margin-top: 20px;">+ Services</span>
+            <div class="plusMoins" id="choixServices">
+                </br>
+                <span class="boutonDev">+ Pantalon</span>
+                <div class="plusMoins">
+                    </br>
+                    <div>
+                        <span class="boutonDev">+ Ourlet</span>
+                        <div class="plusMoins">
+                            <input type="text" placeholder="Longueur (cm)"></br>
+                            <input class="boutonEnre" type="button" value="Enregistrer longueur">
+                        </div>
+                    </div>
+                    </br>
+                    <div>
+                        <span class="boutonDev">+ Allonger</span>
+                        <div class="plusMoins">
+                            <input type="text" placeholder="Longueur (cm)"></br>
+                            <input class="boutonEnre" type="button" value="Enregistrer longueur">
+                        </div>
+                    </div>
+                    </br>
+                    <div>
+                        <span class="boutonDev">+ Réduire</span>
+                        <div class="plusMoins">
+                            <input type="text" placeholder="Longueur (cm)"></br>
+                            <input class="boutonEnre" type="button" value="Enregistrer longueur">
+                        </div>
+                    </div>
+                    </br>
+                    <div>
+                        <span class="boutonDev">+ Customisation bas</span></br>
+                        <div class="plusMoins">
+                            <form>
+                                <select>
+                                    <option value="Fente">Fente</option>
+                                    <option value="Talonnette">Talonnette</option>
+                                    <option value="Revers">Revers</option>
+                                    <option value="Ajout-Fermeture">Ajout Fermeture</option>
+                                </select>
+                            </form>
+                            <input class="boutonEnre" type="button" value="Enregistrer choix">
+                        </div>
+                    </div>
+                    </br>
+                    <div>
+                        <span class="boutonDev">+ Couture</span>
+                        <div class="plusMoins">
+                            <span>Couture invisible?</span></br>
+                            <input type="checkbox" name="coutureInvisible">
+                            <input class="boutonEnre" type="button" value="Enregistrer choix">
+                        </div>
+                    </div>
                 </div>
-                <div>
-                    <span>Ourlet Manche </span>
-                    <input id="ourletManche" type="text" placeholder="longueur(cm)">
-                </div>
-                <input id="boutonOK" type="button" value="Enregistrer commande">
             </div>
         </div>
+        <div id="merceries">
+        </div>
+
     </div>
     <div id="recap">
         <h4>Client</h4>

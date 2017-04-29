@@ -112,6 +112,10 @@ $(document).ready(function() {
         var commande = [];
         var i = 0;
         $(this).parent().find($('.mesure')).each(function() {
+            //On récupère le nom du placeholder
+            commande[i] = $(this).attr('placeholder');
+            i++;
+            //Ensuite on récupère la valeur tapé
             commande[i] = $(this).val();
             i++;
         });
@@ -126,14 +130,20 @@ $(document).ready(function() {
         i = 0;
         //Pour chaque valeur qui se trouve dans le tableau d'information récupérer auparavant on va effectué cette fonction
         commande.forEach(function() {
+            //Si la valeur de i est égale à la taille du tableau commande alors on sort de la fonction
+            //Dans cette fonction on incrémente 2 fois i pour récupèrer le nom du placeholder et la valeur
+            //Donc forEach va s'exécuter 6 fois par exemple pour 3 cases au lieu de 3 car il ignore les i
+            //On met donc une sécurité pour palier ce problème
+            if (i == commande.length)
+                return;
             //On créer des balises tableaux
             var liste = $('<tr><td class="mesu"></td></tr>');
             //On va ensuite insérer la valeur qui se trouve dans le tableau à i position dans cette balise
-            liste.find('.mesu').text(commande[i] + " cm");
+            liste.find('.mesu').text(commande[i] + " : " + commande[i + 1]);
             //On rajoute chaque tableau créer dans le tableau qui plus en haut
             choix.find('.lesMesures').append(liste);
             //On oublie pas d'incrémenter
-            i++;
+            i += 2;
         });
         //Dès qu'on a fini de tout rentrer alors on insère le tout dans la partie récapitulatif
         $('#recapCommande').append(choix);

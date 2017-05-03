@@ -122,7 +122,7 @@ $(document).ready(function() {
         //On récupère l'intitulé de la commande (exemple : un ourlet, une customisation pour pantalon etc...)
         var intitule = $(this).parent().parent().find($('.boutonDev')).text();
         //On va créer des balises tableaux afin de mettre toutes les informations à l'intérieur
-        var choix = $('<tr><td class="type"></td></tr><tr><td class="intitule"></td></tr><tr><td class="lesMesures"></td></tr>');
+        var choix = $('<tr><td class="croixTD"><img class="croixSuppr" src="photos/croix.png"></td><td class="type"></td></tr><tr><td class="intitule"></td></tr><tr><td class="lesMesures"></td></tr>');
         //La première information (type) sera forcément services et non mercerie 
         choix.find('.type').text("Service");
         //On insère ensuite l'intitulé récupérer auparavant

@@ -24,3 +24,13 @@
 input {
     margin-top: 10px;
 }
+
+.croixSuppr {
+    width: 25px;
+    height: 25px;
+}
+
+.croixTD {
+    width: 10px;
+    height: 10px;
+}

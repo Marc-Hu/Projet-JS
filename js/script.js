@@ -83,6 +83,11 @@ $(document).ready(function() {
         }
     });
 
+    $('#recapCommande').on('click', '.croixTD', function(e) {
+        console.log("Appuie sur le bouton supprimer");
+        $(this).parent().remove();
+    });
+
     //Section Service, un bouton est relaché dans une des cases d'un formulaire
     $('.mesure').keyup(function(e) {
         console.log("Bouton relaché dans mesure");
@@ -122,32 +127,26 @@ $(document).ready(function() {
         //On récupère l'intitulé de la commande (exemple : un ourlet, une customisation pour pantalon etc...)
         var intitule = $(this).parent().parent().find($('.boutonDev')).text();
         //On va créer des balises tableaux afin de mettre toutes les informations à l'intérieur
-        var choix = $('<tr><td class="croixTD"><img class="croixSuppr" src="photos/croix.png"></td><td class="type"></td></tr><tr><td class="intitule"></td></tr><tr><td class="lesMesures"></td></tr>');
+        var choix = $('<ul><li class="croixTD"><img class="croixSuppr" src="photos/croix.png"></li><li class="type"></li><li class="intitule"></li><li class="lesMesures"></li></ul>');
         //La première information (type) sera forcément services et non mercerie 
         choix.find('.type').text("Service");
         //On insère ensuite l'intitulé récupérer auparavant
         choix.find('.intitule').text(intitule);
         i = 0;
         //Pour chaque valeur qui se trouve dans le tableau d'information récupérer auparavant on va effectué cette fonction
-        commande.forEach(function() {
-            //Si la valeur de i est égale à la taille du tableau commande alors on sort de la fonction
-            //Dans cette fonction on incrémente 2 fois i pour récupèrer le nom du placeholder et la valeur
-            //Donc forEach va s'exécuter 6 fois par exemple pour 3 cases au lieu de 3 car il ignore les i
-            //On met donc une sécurité pour palier ce problème
-            if (i == commande.length)
-                return;
+        for (var i = 0; i < commande.length; i += 2) {
             //On créer des balises tableaux
-            var liste = $('<tr><td class="mesu"></td></tr>');
+            var liste = $('<ul><li class="mesu"></li></ul>');
             //On va ensuite insérer la valeur qui se trouve dans le tableau à i position dans cette balise
             liste.find('.mesu').text(commande[i] + " : " + commande[i + 1]);
             //On rajoute chaque tableau créer dans le tableau qui plus en haut
             choix.find('.lesMesures').append(liste);
-            //On oublie pas d'incrémenter
-            i += 2;
-        });
+        };
         //Dès qu'on a fini de tout rentrer alors on insère le tout dans la partie récapitulatif
         $('#recapCommande').append(choix);
     });
+
+
 
     console.log("La mise en place est finie. En attente d'événements...");
 });

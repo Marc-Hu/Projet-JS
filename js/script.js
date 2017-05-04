@@ -88,6 +88,26 @@ $(document).ready(function() {
         $(this).parent().remove();
     });
 
+    //Section récapitulatif, modification de la quantité
+    $('#recapCommande').on('click', '.quantite span', function(e) {
+        console.log("Appuie sur le bouton moins ou plus");
+        var valeur = $(this).parent().find('.valeurQuantite').text();
+        if ($(this).text().charAt(0) == '-') {
+            if (valeur != 1) {
+                console.log("Valeur différente de 1 donc on décrémente.");
+                valeur--;
+                $(this).parent().find('.valeurQuantite').text(valeur);
+            } else
+                alert("La quantité ne peut pas être nulle");
+        } else {
+            if (valeur < 50) {
+                valeur++;
+                $(this).parent().find('.valeurQuantite').text(valeur);
+            } else
+                alert("La quantité ne peut pas être supérieur à 50");
+        }
+    });
+
     //Section Service, un bouton est relaché dans une des cases d'un formulaire
     $('.mesure').keyup(function(e) {
         console.log("Bouton relaché dans mesure");
@@ -127,7 +147,7 @@ $(document).ready(function() {
         //On récupère l'intitulé de la commande (exemple : un ourlet, une customisation pour pantalon etc...)
         var intitule = $(this).parent().parent().find($('.boutonDev')).text();
         //On va créer des balises tableaux afin de mettre toutes les informations à l'intérieur
-        var choix = $('<ul><li class="croixTD"><img class="croixSuppr" src="photos/croix.png"></li><li class="type"></li><li class="intitule"></li><li class="lesMesures"></li></ul>');
+        var choix = $('<ul><li class="croixTD"><img class="croixSuppr" src="photos/croix.png"></li><li class="type"></li><li class="intitule"></li><li class="lesMesures"></li><li class="quantite"><span class="moins">-</span><span class="valeurQuantite">1</span><span class="plus">+</span></li></ul>');
         //La première information (type) sera forcément services et non mercerie 
         choix.find('.type').text("Service");
         //On insère ensuite l'intitulé récupérer auparavant

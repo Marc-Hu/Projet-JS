@@ -11,9 +11,14 @@
     font-size: 25px;
 }
 
-.incoText {
+.incoText,
+.incoQuantite {
     color: red;
     margin-left: 20px;
+}
+
+.valeurQuantite {
+    width: 10%;
 }
 
 #choixServices {

@@ -89,7 +89,7 @@ $(document).ready(function() {
     });
 
     //Section récapitulatif, modification de la quantité
-    $('#recapCommande').on('click', '.quantite span', function(e) {
+    $('body').on('click', '.quantite span', function(e) {
         console.log("Appuie sur le bouton moins ou plus");
         var valeur = $(this).parent().find('.valeurQuantite').text();
         if ($(this).text().charAt(0) == '-') {
@@ -108,7 +108,7 @@ $(document).ready(function() {
         }
     });
 
-    //Section Service, un bouton est relaché dans une des cases d'un formulaire
+    //Section Service, une touche est relaché dans une des cases d'un formulaire
     $('.mesure').keyup(function(e) {
         console.log("Bouton relaché dans mesure");
         //On récupère la valeur qui se trouve dans la case
@@ -121,6 +121,17 @@ $(document).ready(function() {
         } else {
             //Sinon si c'est incorrecte alors on affiche le message d'erreur
             $(this).parent().find($('.incoText')).show();
+        }
+    });
+
+    //Section Service, une touche est relaché dans une case quantité
+    $('.quantiteService').keyup(function(e) {
+        console.log("Touche enfoncé dans la case quantité");
+        var valeur = $(this).val();
+        if (/^[0-9]+$/.test(valeur)) {
+            $(this).parent().find($('.incoQuantite')).hide();
+        } else {
+            $(this).parent().find($('.incoQuantite')).show();
         }
     });
 

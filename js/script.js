@@ -1,12 +1,11 @@
 console.log("Ce programme JS vient d'être chargé");
 $(document).ready(function() {
     //On cache tous les formulaires
-    $('.plusMoins').hide();
     console.log("Le document est pret");
 
     //Section client, lorsqu'on appuie sur une touche dans le formulaire
-    $('#formClient input').keyup(function(e) {
-        console.log("touche appuyé");
+    $('#formClient .client').keyup(function(e) {
+        console.log("touche appuyé dans le formulaire client");
         //On récupère la valeur que l'utilisateur à tapé dans la case
         var texte = $(this).val();
         //On test si celui-ci correspond bien à un nom/prénom ou à une date du type jj/mm/2017
@@ -32,7 +31,7 @@ $(document).ready(function() {
         }
         //Si on a passé l'étape au-dessus alors on sait qu'on a pas de client en cours
         //On vérifie maintenant que les erreurs pour les 3 cases ne sont pas visible
-        if ($('#formClient span').is(":visible")) {
+        if ($('#formClient .incotext').is(":visible")) {
             //Si il y a eu moins une erreur qui est 'visible' alors on alerte l'utilisateur
             alert("Erreur! Certains champs ne sont pas complétés ou incorrect.");
             return;
@@ -45,7 +44,7 @@ $(document).ready(function() {
                 date: $('#date').val()
             };
             //On va insérer toutes ces informations dans des tableaux
-            var nom = $('<tr><td id="nomP"></td></tr><tr><td id="prenomP"></td></tr><tr><td id="dateP"></td></tr>');
+            var nom = $('<ul><li id="nomP"></li><li id="prenomP"></li><li id="dateP"></li></ul>');
             nom.find('#nomP').text("Nom du client : " + client.nom.toUpperCase());
             nom.find('#prenomP').text("Prénom du client : " + client.prenom.toUpperCase());
             nom.find('#dateP').text("Date de dépôt : " + client.date);
@@ -67,42 +66,44 @@ $(document).ready(function() {
             return;
         }
         //On regarde si le premier caractère du 'bouton' est un +
-        if ($(this).text().charAt(0) == '+') {
-            //Si c'est le cas, alors on affiche son contenu
-            console.log("Clique bouton plus");
-            $(this).parent().find($('.plusMoins')).first().show();
-            //Et on remplace le + par un -
-            $(this).text($(this).text().replace('+', '-'));
-        } else {
-            //Sinon dans le cas contraire c'est-à-dire si le premier caractère est un -
-            console.log("Clique bouton moins");
-            //On cache son contenu
+        if ($(this).parent().find($('.plusMoins')).first().is(":visible")) {
             $(this).parent().find($('.plusMoins')).first().hide();
-            //Et on remplace le - par un +
-            $(this).text($(this).text().replace('-', '+'));
+        } else {
+            $('.boutonDetail').hide();
+            $(this).parent().find($('.plusMoins')).first().show();
         }
     });
 
     $('#recapCommande').on('click', '.croixTD', function(e) {
         console.log("Appuie sur le bouton supprimer");
-        $(this).parent().remove();
+        if (confirm("Est-vous sur de vouloir supprimer la commande?") == true)
+            $(this).parent().remove();
     });
 
+    $('body').on('keyup', '.valeurQuantite', function(e) {
+        console.log("modification du champ de quantité");
+        var texte = $(this).val();
+        if ((/^[1-9]+$/.test(texte)) && texte < 50)
+            $(this).parent().find('.incoQuantite').hide();
+        else
+            $(this).parent().find('.incoQuantite').show();
+    })
+
     //Section récapitulatif, modification de la quantité
-    $('body').on('click', '.quantite span', function(e) {
+    $('body').on('click', '.quantite .changeQuantite', function(e) {
         console.log("Appuie sur le bouton moins ou plus");
-        var valeur = $(this).parent().find('.valeurQuantite').text();
+        var valeur = $(this).parent().find('.valeurQuantite').val();
         if ($(this).text().charAt(0) == '-') {
             if (valeur != 1) {
                 console.log("Valeur différente de 1 donc on décrémente.");
                 valeur--;
-                $(this).parent().find('.valeurQuantite').text(valeur);
+                $(this).parent().find('.valeurQuantite').val(valeur);
             } else
                 alert("La quantité ne peut pas être nulle");
         } else {
             if (valeur < 50) {
                 valeur++;
-                $(this).parent().find('.valeurQuantite').text(valeur);
+                $(this).parent().find('.valeurQuantite').val(valeur);
             } else
                 alert("La quantité ne peut pas être supérieur à 50");
         }
@@ -124,22 +125,11 @@ $(document).ready(function() {
         }
     });
 
-    //Section Service, une touche est relaché dans une case quantité
-    $('.quantiteService').keyup(function(e) {
-        console.log("Touche enfoncé dans la case quantité");
-        var valeur = $(this).val();
-        if (/^[0-9]+$/.test(valeur)) {
-            $(this).parent().find($('.incoQuantite')).hide();
-        } else {
-            $(this).parent().find($('.incoQuantite')).show();
-        }
-    });
-
     //Section Services, un des bouton d'enregistrement est cliqué
     $('.boutonEnre').click(function(e) {
         console.log("Bouton enregistré cliqué");
         //On regarde si tous les messages d'erreurs sont visibles ou non
-        if ($(this).parent().find($('.incoText')).is(":visible")) {
+        if ($(this).parent().find($('.incoText')).is(":visible") || $(this).parent().find($('.incoQuantite')).is(":visible")) {
             //Si il y a au moins un message d'erreur qui est visible alors on informe l'utilisateur
             alert("Erreur! Les mesures que vous avez rentré sont soit incorrecte, soit incomplète.");
             return;
@@ -157,12 +147,14 @@ $(document).ready(function() {
         });
         //On récupère l'intitulé de la commande (exemple : un ourlet, une customisation pour pantalon etc...)
         var intitule = $(this).parent().parent().find($('.boutonDev')).text();
+        var quantite = $(this).parent().find('.valeurQuantite').val();
         //On va créer des balises tableaux afin de mettre toutes les informations à l'intérieur
-        var choix = $('<ul><li class="croixTD"><img class="croixSuppr" src="photos/croix.png"></li><li class="type"></li><li class="intitule"></li><li class="lesMesures"></li><li class="quantite"><span class="moins">-</span><span class="valeurQuantite">1</span><span class="plus">+</span></li></ul>');
+        var choix = $('<ul><li class="croixTD"><img class="croixSuppr" src="photos/croix.png"></li><li class="type"></li><li class="intitule"></li><li class="lesMesures"></li><li class="quantite"><span class="moins changeQuantite">-</span><input class="valeurQuantite" type="text" value=""><span class=" changeQuantite plus">+</span></li></ul>');
         //La première information (type) sera forcément services et non mercerie 
         choix.find('.type').text("Service");
         //On insère ensuite l'intitulé récupérer auparavant
         choix.find('.intitule').text(intitule);
+        choix.find('.valeurQuantite').val(quantite);
         i = 0;
         //Pour chaque valeur qui se trouve dans le tableau d'information récupérer auparavant on va effectué cette fonction
         for (var i = 0; i < commande.length; i += 2) {
@@ -176,8 +168,6 @@ $(document).ready(function() {
         //Dès qu'on a fini de tout rentrer alors on insère le tout dans la partie récapitulatif
         $('#recapCommande').append(choix);
     });
-
-
 
     console.log("La mise en place est finie. En attente d'événements...");
 });

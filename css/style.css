@@ -1,13 +1,13 @@
 #infoG {
-    width: 300px;
+    width: 40%;
     float: left;
-    margin-left: 20%;
+    margin-left: 5%;
 }
 
 #recap {
-    width: 300px;
+    width: 40%;
     float: right;
-    margin-right: 20%;
+    margin-right: 5%;
     font-size: 25px;
 }
 
@@ -18,7 +18,8 @@
 }
 
 .valeurQuantite {
-    width: 10%;
+    width: 7%;
+    text-align: center;
 }
 
 #choixServices {
@@ -38,8 +39,26 @@ input {
 .croixTD {
     width: 30px;
     height: 30px;
+    cursor: pointer;
 }
 
 ul {
     list-style: none;
+}
+
+.boutonDev {
+    cursor: pointer;
+}
+
+.moins,
+.plus {
+    cursor: pointer;
+}
+
+.plusMoins {
+    display: none;
+}
+
+.incoQuantite {
+    display: none;
 }

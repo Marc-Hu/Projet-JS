@@ -15,37 +15,37 @@
         <form id="formClient">
             <h2>Information générale du client</h2>
             <div>
-                <input id="nom" type="text" placeholder="nom"><span class="incoText" id="erreurNom">Nom incorrect</span></br>
+                <input class="client" id="nom" type="text" placeholder="nom"><span class="incoText" id="erreurNom">Nom incorrect</span></br>
             </div>
             <div>
-                <input id="prenom" type="text" placeholder="prenom"><span class="incoText" id="erreurPre">Prénom incorrect</span></br>
+                <input class="client" id="prenom" type="text" placeholder="prenom"><span class="incoText" id="erreurPre">Prénom incorrect</span></br>
             </div>
             <div>
-                <input id="date" type="text" placeholder="date de dépôt jj/mm/yyyy"><span class="incoText" id="erreurDate">Date Incorrecte</span></br>
+                <input class="client" id="date" type="text" placeholder="date de dépôt jj/mm/yyyy"><span class="incoText" id="erreurDate">Date Incorrecte</span></br>
             </div>
             <input id="boutonOK" type="button" value="Enregistrer">
         </form>
         </br>
         <div id="services">
-            <span class="boutonDev" style="margin-top: 20px;">+ Services</span>
+            <span class="boutonDev" style="margin-top: 20px;">Services</span>
             <div class="plusMoins" id="choixServices">
                 </br>
-                <span class="boutonDev">+ Pantalon</span>
+                <span class="boutonDev">Pantalon</span>
                 <div class="plusMoins">
                     </br>
                     <div>
-                        <span class="boutonDev">+ Customisation (forme)</span></br>
+                        <span class="boutonDev">Customisation (forme)</span></br>
                         <div class="plusMoins">
                             </br>
                             <div>
-                                <span class="boutonDev">+ Cigarette</span></br>
-                                <div class="plusMoins">
+                                <span class="boutonDev">Cigarette</span></br>
+                                <div class="plusMoins boutonDetail">
                                     <input class="mesure" type="text" placeholder="Mesure cuisse (cm)"><span class="incoText">Chiffre incorrecte</span></br>
                                     <div class="quantite">
                                         <p>Quantité : </p>
-                                        <span>-</span>
+                                        <span class="moins changeQuantite">-</span>
                                         <input class="valeurQuantite" type="text" value="1">
-                                        <span>+</span>
+                                        <span class="plus changeQuantite">+</span>
                                         <span class="incoQuantite">Quantité incorrecte</span>
                                     </div>
                                     <input class="boutonEnre" type="button" value="Enregistrer mesure">
@@ -53,8 +53,8 @@
                             </div>
                             </br>
                             <div>
-                                <span class="boutonDev">+ Slim</span></br>
-                                <div class="plusMoins">
+                                <span class="boutonDev">Slim</span></br>
+                                <div class="plusMoins boutonDetail">
                                     <div>
                                         <input class="mesure" type="text" placeholder="Mesure cuisse (cm)"><span class="incoText">Chiffre incorrecte</span></br>
                                     </div>
@@ -63,14 +63,21 @@
                                     </div>
                                     <div>
                                         <input class="mesure" type="text" placeholder="Mesure talon (cm)"><span class="incoText">Chiffre incorrecte</span></br>
+                                    </div>
+                                    <div class="quantite">
+                                        <p>Quantité : </p>
+                                        <span class="moins changeQuantite">-</span>
+                                        <input class="valeurQuantite" type="text" value="1">
+                                        <span class="plus changeQuantite">+</span>
+                                        <span class="incoQuantite">Quantité incorrecte</span>
                                     </div>
                                     <input class="boutonEnre" type="button" value="Enregistrer mesures">
                                 </div>
                             </div>
                             </br>
                             <div>
-                                <span class="boutonDev">+ Cuve</span></br>
-                                <div class="plusMoins">
+                                <span class="boutonDev">Cuve</span></br>
+                                <div class="plusMoins boutonDetail">
                                     <div>
                                         <input class="mesure" type="text" placeholder="Mesure cuisse (cm)"><span class="incoText">Chiffre incorrecte</span></br>
                                     </div>
@@ -80,6 +87,13 @@
                                     <div>
                                         <input class="mesure" type="text" placeholder="Mesure talon (cm)"><span class="incoText">Chiffre incorrecte</span></br>
                                     </div>
+                                    <div class="quantite">
+                                        <p>Quantité : </p>
+                                        <span class="moins changeQuantite">-</span>
+                                        <input class="valeurQuantite" type="text" value="1">
+                                        <span class="plus changeQuantite">+</span>
+                                        <span class="incoQuantite">Quantité incorrecte</span>
+                                    </div>
                                     <input class="boutonEnre" type="button" value="Enregistrer mesures">
                                 </div>
                             </div>
@@ -87,32 +101,53 @@
                     </div>
                     </br>
                     <div>
-                        <span class="boutonDev">+ Ourlet</span>
-                        <div class="plusMoins">
+                        <span class="boutonDev">Ourlet</span>
+                        <div class="plusMoins boutonDetail">
                             <input class="mesure" type="text" placeholder="Longueur (cm)"><span class="incoText">Chiffre incorrecte</span></br>
+                            <div class="quantite">
+                                <p>Quantité : </p>
+                                <span class="moins changeQuantite">-</span>
+                                <input class="valeurQuantite" type="text" value="1">
+                                <span class="plus changeQuantite">+</span>
+                                <span class="incoQuantite">Quantité incorrecte</span>
+                            </div>
                             <input class="boutonEnre" type="button" value="Enregistrer longueur">
                         </div>
                     </div>
                     </br>
                     <div>
-                        <span class="boutonDev">+ Allonger</span>
-                        <div class="plusMoins">
+                        <span class="boutonDev">Allonger</span>
+                        <div class="plusMoins boutonDetail">
                             <input class="mesure" type="text" placeholder="Longueur (cm)"><span class="incoText">Chiffre incorrecte</span></br>
+                            <div class="quantite">
+                                <p>Quantité : </p>
+                                <span class="moins changeQuantite">-</span>
+                                <input class="valeurQuantite" type="text" value="1">
+                                <span class="plus changeQuantite">+</span>
+                                <span class="incoQuantite">Quantité incorrecte</span>
+                            </div>
                             <input class="boutonEnre" type="button" value="Enregistrer longueur">
                         </div>
                     </div>
                     </br>
                     <div>
-                        <span class="boutonDev">+ Réduire</span>
-                        <div class="plusMoins">
+                        <span class="boutonDev">Réduire</span>
+                        <div class="plusMoins boutonDetail">
                             <input class="mesure" type="text" placeholder="Longueur (cm)"><span class="incoText">Chiffre incorrecte</span></br>
+                            <div class="quantite">
+                                <p>Quantité : </p>
+                                <span class="moins changeQuantite">-</span>
+                                <input class="valeurQuantite" type="text" value="1">
+                                <span class="plus changeQuantite">+</span>
+                                <span class="incoQuantite">Quantité incorrecte</span>
+                            </div>
                             <input class="boutonEnre" type="button" value="Enregistrer longueur">
                         </div>
                     </div>
                     </br>
                     <div>
-                        <span class="boutonDev">+ Customisation bas</span></br>
-                        <div class="plusMoins">
+                        <span class="boutonDev">Customisation bas</span></br>
+                        <div class="plusMoins boutonDetail">
                             <form>
                                 <select>
                                     <option value="Fente">Fente</option>
@@ -126,8 +161,8 @@
                     </div>
                     </br>
                     <div>
-                        <span class="boutonDev">+ Couture</span>
-                        <div class="plusMoins">
+                        <span class="boutonDev">Couture</span>
+                        <div class="plusMoins boutonDetail">
                             <span>Couture invisible?</span></br>
                             <input type="checkbox" name="coutureInvisible">
                             <input class="boutonEnre" type="button" value="Enregistrer choix">

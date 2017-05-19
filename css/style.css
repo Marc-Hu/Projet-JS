@@ -1,11 +1,11 @@
 #infoG {
-    width: 40%;
+    width: 45%;
     float: left;
     margin-left: 5%;
 }
 
 #recap {
-    width: 40%;
+    width: 45%;
     float: right;
     margin-right: 5%;
     font-size: 25px;
@@ -61,4 +61,32 @@ ul {
 
 .incoQuantite {
     display: none;
+}
+
+#boutonOK,
+.boutonEnre {
+    cursor: pointer;
+}
+
+.imageMoins,
+.imagePlus {
+    width: 20px;
+    height: 20px;
+}
+
+.descMesure {
+    margin: 0px;
+}
+
+.prix {
+    margin-top: 5px;
+    margin-bottom: 0px;
+}
+
+#recapCommande li {
+    font-size: 15px;
+}
+
+.modifMesure {
+    cursor: pointer;
 }

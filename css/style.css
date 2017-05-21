@@ -2,6 +2,8 @@
     width: 45%;
     float: left;
     margin-left: 5%;
+    display: inline-block;
+    text-align: center;
 }
 
 #recap {
@@ -9,6 +11,8 @@
     float: right;
     margin-right: 5%;
     font-size: 25px;
+    display: inline-block;
+    text-align: center;
 }
 
 .incoText,
@@ -25,6 +29,8 @@
 #choixServices {
     width: 300px;
     float: left;
+    margin: 0px;
+    padding-bottom: 10px;
 }
 
 input {
@@ -89,4 +95,93 @@ ul {
 
 .modifMesure {
     cursor: pointer;
+}
+
+#formClient {
+    border: 1px solid black;
+    width: 80%;
+    border-radius: 50px;
+    display: inline-block;
+    text-align: center;
+    padding: 5px;
+    background-color: #c8e6c9;
+}
+
+#custom,
+#services,
+#merceries,
+#client {
+    border: 1px solid black;
+    display: inline-block;
+    text-align: center;
+    padding: 10px;
+    margin-top: 0px;
+}
+
+#client,
+#recapCommande {
+    border-radius: 50px;
+    background-color: #b2dfdb;
+}
+
+body {
+    background-color: #00796b;
+}
+
+#custom,
+#services,
+#merceries {
+    border-radius: 20px;
+    margin-top: 20px;
+}
+
+.vetement {
+    border-radius: 20px;
+    margin-top: 20px;
+    background-color: #66bb6a;
+}
+
+#infoClient {
+    padding: 0px;
+}
+
+#services,
+#merceries {
+    background-color: #dcedc8;
+}
+
+#custom {
+    background-color: #aed581;
+}
+
+.boutonDetail {
+    border: 3px solid white;
+    border-radius: 50px;
+}
+
+#recapCommande {
+    width: 70%;
+    text-align: center;
+    display: inline-block;
+    text-align: center;
+    border: 1px solid black;
+}
+
+.recapArticle {
+    padding: 0px;
+    margin: 15px;
+}
+
+.hr {
+    width: 60%;
+    margin-left: 20%;
+}
+
+.croixTD {
+    color: red;
+    text-align: center;
+}
+
+.mesures {
+    padding: 0px;
 }

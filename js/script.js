@@ -175,7 +175,7 @@ $(document).ready(function() {
         var quantite = $(this).parent().find('.valeurQuantite').val();
         var prix = parseInt($(this).parent().find('.prixUnitaire').text());
         //On va créer des balises tableaux afin de mettre toutes les informations à l'intérieur
-        var choix = $('<ul><li class="croixTD"><img class="croixSuppr" src="photos/croix.png"></li><li class="type"></li><li class="intitule"></li><li class="lesMesures"></li><li class="quantite"><span>Quantité :</span><span class="moins"><img class="imageMoins changeQuantite" src="./photos/moins.png"></span><input class="valeurQuantite" type="text" value=""><span class="plus"><img class="imagePlus changeQuantite" src="./photos/plus.png"></span><p>Prix unitaire TTC (en €) : <span class="prixUnite"></span></p><p class="prix">Total de l\'article TTC (en €) : <span class="prixTotalArticle"></span></p></li></ul>');
+        var choix = $('<ul class="recapArticle"><li class="croixTD">Supprimer</li><li class="type"></li><li class="intitule"></li><li class="lesMesures"></li><li class="quantite"><span>Quantité :</span><span class="moins"><img class="imageMoins changeQuantite" src="./photos/moins.png"></span><input class="valeurQuantite" type="text" value=""><span class="plus"><img class="imagePlus changeQuantite" src="./photos/plus.png"></span><p>Prix unitaire TTC (en €) : <span class="prixUnite"></span></p><p class="prix">Total de l\'article TTC (en €) : <span class="prixTotalArticle"></span></p></li></ul><hr class="hr">');
         //La première information (type) sera forcément services et non mercerie 
         choix.find('.type').text("Service");
         //On insère ensuite l'intitulé récupérer auparavant
@@ -190,7 +190,7 @@ $(document).ready(function() {
         //Pour chaque valeur qui se trouve dans le tableau d'information récupérer auparavant on va effectué cette fonction
         for (var i = 0; i < commande.length; i += 2) {
             //On créer des balises tableaux
-            var liste = $('<ul><li><span class="mesu"></span><span class="valeurMesure"></span></li><span class="modifMesure">Modifier mesure</span></ul>');
+            var liste = $('<ul class="mesures"><li><span class="mesu"></span><span class="valeurMesure"></span></li><span class="modifMesure">Modifier mesure</span></ul>');
             //On va ensuite insérer la valeur qui se trouve dans le tableau à i position dans cette balise
             liste.find('.mesu').text(commande[i] + " : ");
             liste.find('.valeurMesure').text(commande[i + 1]);

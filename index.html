@@ -15,25 +15,28 @@
         <form id="formClient">
             <h2>Information générale du client</h2>
             <div>
+                <span>Nom :</span>
                 <input class="client" id="nom" type="text" placeholder="nom"><span class="incoText" id="erreurNom">Nom incorrect</span></br>
             </div>
             <div>
+                <span>Prénom :</span>
                 <input class="client" id="prenom" type="text" placeholder="prenom"><span class="incoText" id="erreurPre">Prénom incorrect</span></br>
             </div>
             <div>
+                <span>Date de dépôt :</span>
                 <input class="client" id="date" type="text" placeholder="date de dépôt jj/mm/yyyy"><span class="incoText" id="erreurDate">Date Incorrecte</span></br>
             </div>
             <input id="boutonOK" type="button" value="Enregistrer">
         </form>
         </br>
         <div id="services">
-            <p class="boutonDev" style="margin-top: 20px;">Services</p>
-            <div class="plusMoins" id="choixServices">
+            <p class="boutonDev">Services</p>
+            <div class="plusMoins vetement" id="choixServices">
                 </br>
                 <span class="boutonDev">Pantalon</span>
                 <div class="plusMoins">
                     </br>
-                    <div>
+                    <div id="custom">
                         <span class="boutonDev">Customisation (forme)</span></br>
                         <div class="plusMoins">
                             </br>
@@ -170,51 +173,28 @@
                             <input class="boutonEnre" type="button" value="Enregistrer longueur">
                         </div>
                     </div>
-                    </br>
-                    <div>
-                        <span class="boutonDev">Customisation bas</span></br>
-                        <div class="plusMoins boutonDetail">
-                            <form>
-                                <select>
-                                    <option value="Fente">Fente</option>
-                                    <option value="Talonnette">Talonnette</option>
-                                    <option value="Revers">Revers</option>
-                                    <option value="Ajout-Fermeture">Ajout Fermeture</option>
-                                </select>
-                            </form>
-                            <input class="boutonEnre" type="button" value="Enregistrer choix">
-                        </div>
-                    </div>
-                    </br>
-                    <div>
-                        <span class="boutonDev">Couture</span>
-                        <div class="plusMoins boutonDetail">
-                            <span>Couture invisible?</span></br>
-                            <input type="checkbox" name="coutureInvisible">
-                            <input class="boutonEnre" type="button" value="Enregistrer choix">
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
         <div id="merceries">
+            <p class="boutonDev">Merceries</p>
         </div>
 
     </div>
+
     <div id="recap">
         <h4 id="client">Client
-            <ul>
+            <ul id="infoClient">
                 <li id="nomP">Nom du client : Hu</li>
                 <li id="prenomP">Prenom du client : Marc</li>
                 <li id="dateP">date de dépôt : 01/12/2017</li>
             </ul>
         </h4>
         <div id="recapCommande">
-            <tr id="listRecapCommande">
-            </tr>
-        </div>
-        <div id="totalTTC">
-            <p>Total (TTC): <span id="totalCommande">0</span>€</p>
+            <div id="totalTTC">
+                <p>Total (TTC): <span id="totalCommande">0</span>€</p>
+                <hr class="hr">
+            </div>
         </div>
     </div>
 

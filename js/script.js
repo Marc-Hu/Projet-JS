@@ -11,10 +11,10 @@ $(document).ready(function() {
         //On test si celui-ci correspond bien à un nom/prénom ou à une date du type jj/mm/2017
         if ((/^[a-zA-Z]+$/.test(texte) && texte.length < 20) || (/^[0-3][0-9]\/[0-1][0-9]\/2017$/.test(texte) && texte.length == 10)) {
             //Si le texte qui est dans la case correspond à une des conditions au dessus alors on cache l'erreur
-            $(this).parent().find(".incoText").hide();
+            $(this).parent().find(".incoText").show();
         } else {
             //Sinon on laisse le texte d'erreur
-            $(this).parent().find(".incoText").show();
+            $(this).parent().find(".incoText").hide();
         }
     });
 
@@ -31,7 +31,7 @@ $(document).ready(function() {
         }
         //Si on a passé l'étape au-dessus alors on sait qu'on a pas de client en cours
         //On vérifie maintenant que les erreurs pour les 3 cases ne sont pas visible
-        if ($('#formClient .incotext').is(":visible")) {
+        if (!($('#formClient .incotext').is(":visible"))) {
             //Si il y a eu moins une erreur qui est 'visible' alors on alerte l'utilisateur
             alert("Erreur! Certains champs ne sont pas complétés ou incorrect.");
             return;
@@ -75,57 +75,90 @@ $(document).ready(function() {
         }
     });
 
+    //Section des récapitulatifs des commandes, lorsqu'on clique sur le bouton supprimer
     $('#recapCommande').on('click', '.croixTD', function(e) {
         console.log("Appuie sur le bouton supprimer");
+        //On demande à l'utilisateur de confirmer son choix de suppression
         if (confirm("Est-vous sur de vouloir supprimer la commande?") == true) {
+            //On récupère le sous-total de l'article 
             var sousTotalSuppr = parseInt($(this).parent().find('.prixTotalArticle').text());
+            //Et on le déduis de la valeur total de la commande
             var nouvTotal = parseInt($('#totalCommande').text()) - sousTotalSuppr;
-            console.log(sousTotalSuppr);
+            //On supprime le contenu
             $(this).parent().remove();
+            //On affecte le nouveau Total
             $('#totalCommande').text(nouvTotal);
+            //Si la valeur du total est 'NaN' ce qui arrive lorsqu'on revient à 0
             if ($('#totalCommande').text() == 'NaN')
+            //Alors On affecte 0 à la place de 'NaN'
                 $('#totalCommande').text(0);
         }
     });
 
-    $('body').on('keyup', '.valeurQuantite', function(e) {
+    //Section des récapitulatifs, lorsqu'une touche est relaché dans le input de la valeur de la quantité
+    $('#recapCommande').on('keyup', '.recapArticle .valeurQuantite', function(e) {
         console.log("modification du champ de quantité");
-        var texte = $(this).val();
-        var ancienTotal = parseInt($('#totalCommande').text());
-        var ancienArticleTotal = parseInt($(this).parent().find('.prixTotalArticle').text());
-        var prixUnit = $(this).parent().find('.prixUnite').text();
-        if ((/^[1-9]+$/.test(texte)) && texte < 50) {
-            $(this).parent().find('.incoQuantite').hide();
+        //On récupère la nouvelle valeur de la quantité
+        var nouvQuantite = $(this).val();
+        //On contrôle si c'est bien un chiffre/nombre compris entre 1 et 50 inclus
+        if ((/^[1-9]+$/.test(nouvQuantite)) && nouvQuantite <= 50) {
+            //On récupère l'ancien total
+            var ancienTotal = parseInt($('#totalCommande').text());
+            //On récupère aussi l'ancien total de l'article
+            var ancienArticleTotal = parseInt($(this).parent().find('.prixTotalArticle').text());
+            //On récupère aussi le prix unitaire de l'article
+            var prixUnit = $(this).parent().find('.prixUnite').text();
+            //On soustrait au total le sous-total de l'article
             ancienTotal = ancienTotal - ancienArticleTotal;
-            $(this).parent().find('.prixTotalArticle').text(prixUnit * texte);
-            ancienTotal = ancienTotal + (prixUnit * texte);
-            $('#totalCommande').text(ancienTotal);
-        } else
-            $(this).parent().find('.incoQuantite').show();
+            //On écrase la valeur du sous-total de l'article par le nouveau sous-total
+            $(this).parent().find('.prixTotalArticle').text(prixUnit * nouvQuantite);
+            //Et on écrase l'ancienne valeur du Total par le nouveau
+            $('#totalCommande').text(ancienTotal + (prixUnit * nouvQuantite));
+        }
     })
 
     //Section récapitulatif, modification de la quantité
     $('body').on('click', '.quantite .changeQuantite', function(e) {
         console.log("Appuie sur le bouton moins ou plus");
+        //On récupère l'actuelle valeur de la quantité
         var valeur = $(this).parent().parent().find('.valeurQuantite').val();
+        //On récupère aussi la valeur du prix de l'article à l'unité
         var prixTotal = $(this).parent().parent().find('.prixTotalArticle').text() / valeur;
+        //On récupère la valeur du total de la commande
         var total = parseInt($("#totalCommande").text());
+        //Si l'utilisateur à cliqué sur le bouton moins
         if ($(this).hasClass('imageMoins')) {
+            //On vérifie que la valeur de la quantité est strictement supérieur à 1
             if (valeur > 1) {
                 console.log("Valeur différente de 1 donc on décrémente.");
+                //Si c'est la cas alors on décrémente valeur
                 valeur--;
+                //On soustrait du total la valeur à l'unité de l'article
                 total = parseInt(total) - parseInt(prixTotal);
+                //Le nouveau sous-total est lui aussi soustrait par la valeur à l'unité de l'article
                 prixTotal = prixTotal * valeur;
-            } else
+            } else {
+                //Sinon on alerte l'utilisateur que la quantité ne peut pas être nulle
                 alert("La quantité ne peut pas être nulle");
+                return;
+            }
+            //Dans le cas ou l'utilisateur à cliqué sur le bouton plus
         } else {
+            //On vérifie que la valeur est strictement inférieur à 50
             if (valeur < 50) {
+                //Si c'est le cas alors on incrémente la valeur
                 valeur++;
+                //On remet le nouveau total
                 total = parseInt(total) + parseInt(prixTotal);
+                //On remet le nouveau sous-total
                 prixTotal = prixTotal * valeur;
-            } else
+            } else {
+                //Sinon on alerte l'utilisateur que la quantité ne peut pas être supérieur à 50
                 alert("La quantité ne peut pas être supérieur à 50");
+                return;
+            }
         }
+        //Et pour finir on écrase les anciennes valeur de la quantité, du sous-total et du total par les nouvelles
         $(this).parent().parent().find('.valeurQuantite').val(valeur);
         $(this).parent().parent().find('.prixTotalArticle').text(prixTotal);
         $("#totalCommande").text(total);
@@ -140,10 +173,10 @@ $(document).ready(function() {
         //Sa peut être un nombre entier ou décimal
         if ((/^[0-9]+$/.test(texte) || /^[0-9]+.[0-9]+$/.test(texte)) && texte.length < 5 && texte != 0) {
             //On cache le message d'erreur si le texte entré correspond aux critères
-            $(this).parent().find($('.incoText')).hide();
+            $(this).parent().find($('.incoText')).show();
         } else {
             //Sinon si c'est incorrecte alors on affiche le message d'erreur
-            $(this).parent().find($('.incoText')).show();
+            $(this).parent().find($('.incoText')).hide();
         }
     });
 
@@ -151,9 +184,13 @@ $(document).ready(function() {
     $('.boutonEnre').click(function(e) {
         console.log("Bouton enregistré cliqué");
         //On regarde si tous les messages d'erreurs sont visibles ou non
-        if ($(this).parent().find($('.incoText')).is(":visible") || $(this).parent().find($('.incoQuantite')).is(":visible")) {
+        if (!($(this).parent().find($('.incoText')).is(":visible"))) {
             //Si il y a au moins un message d'erreur qui est visible alors on informe l'utilisateur
             alert("Erreur! Les mesures que vous avez rentré sont soit incorrecte, soit incomplète.");
+            return;
+        }
+        if ($(this).parent().find('.valeurQuantite').val() <= 0) {
+            alert("Erreur! La quantité que vous avez rentré est incorrecte.");
             return;
         }
         //On fait confirmer l'utilisateur pour l'enregistrement d'une commande
@@ -172,13 +209,14 @@ $(document).ready(function() {
         });
         //On récupère l'intitulé de la commande (exemple : un ourlet, une customisation pour pantalon etc...)
         var intitule = $(this).parent().parent().find($('.boutonDev')).text();
+        //On récupère la valeur de la quantité de l'article
         var quantite = $(this).parent().find('.valeurQuantite').val();
+        //On récupère le prix à l'unité de l'article
         var prix = parseInt($(this).parent().find('.prixUnitaire').text());
         //On va créer des balises tableaux afin de mettre toutes les informations à l'intérieur
         var choix = $('<ul class="recapArticle"><li class="croixTD">Supprimer</li><li class="type"></li><li class="intitule"></li><li class="lesMesures"></li><li class="quantite"><span>Quantité :</span><span class="moins"><img class="imageMoins changeQuantite" src="./photos/moins.png"></span><input class="valeurQuantite" type="text" value=""><span class="plus"><img class="imagePlus changeQuantite" src="./photos/plus.png"></span><p>Prix unitaire TTC (en €) : <span class="prixUnite"></span></p><p class="prix">Total de l\'article TTC (en €) : <span class="prixTotalArticle"></span></p></li></ul><hr class="hr">');
-        //La première information (type) sera forcément services et non mercerie 
+        //On insère les différente valeurs récupérer auparavant
         choix.find('.type').text("Service");
-        //On insère ensuite l'intitulé récupérer auparavant
         choix.find('.intitule').text(intitule);
         choix.find('.valeurQuantite').val(quantite);
         choix.find('.prixUnite').text(prix);
@@ -201,11 +239,16 @@ $(document).ready(function() {
         $('#recapCommande').append(choix);
     });
 
+    //Section des récapitulatifs des commandes, lorsque l'utilisateur veut modifier une mesure
     $('#recapCommande').on('click', '.modifMesure', function(e) {
         console.log("Appuie sur la touche modifier mesure");
         var ancienneVal = $(this).parent().find('valeurMesure').text();
+        //prompt permet d'afficher une fenêtre avec un input de type texte pour la nouvelle valeur
         var modif = prompt("Nouvelle mesure : ", ancienneVal);
-        if (modif == null || modif == "" || /^[1-9]+$/.test(modif) || modif < 1) {
+        //Si l'utilisateur clique sur cancel alors on return
+        if (modif === null)
+            return;
+        if (modif == "" || !(/^[1-9]+$/.test(modif)) || modif < 1) {
             alert("Erreur! Valeur incorrecte!");
             return;
         } else

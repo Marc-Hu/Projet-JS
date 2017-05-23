@@ -15,6 +15,10 @@
     text-align: center;
 }
 
+.incoText {
+    display: none;
+}
+
 .incoText,
 .incoQuantite {
     color: red;
@@ -63,10 +67,6 @@ ul {
     display: none;
 }
 
-.incoQuantite {
-    display: none;
-}
-
 #boutonOK,
 .boutonEnre {
     cursor: pointer;
@@ -106,13 +106,19 @@ ul {
 }
 
 #custom,
-#services,
-#merceries,
 #client {
     border: 1px solid black;
     display: inline-block;
     text-align: center;
     padding: 10px;
+    margin-top: 0px;
+}
+
+#services,
+#merceries {
+    border: 1px solid black;
+    display: inline-block;
+    text-align: center;
     margin-top: 0px;
 }
 
@@ -126,7 +132,6 @@ body {
     background-color: #00796b;
 }
 
-#custom,
 #services,
 #merceries {
     border-radius: 20px;
@@ -134,9 +139,10 @@ body {
 }
 
 .vetement {
+    border: 1px solid black;
     border-radius: 20px;
     margin-top: 20px;
-    background-color: #66bb6a;
+    background-color: #b2dfdb;
 }
 
 #infoClient {
@@ -149,11 +155,14 @@ body {
 }
 
 #custom {
-    background-color: #aed581;
+    border-radius: 20px;
+    background-color: #80cbc4;
+    margin-bottom: 10px;
 }
 
-.boutonDetail {
-    border: 3px solid white;
+.article {
+    padding: 10px;
+    border: 1px solid white;
     border-radius: 50px;
 }
 
@@ -178,6 +187,10 @@ body {
 .croixTD {
     color: red;
     text-align: center;
+    border: 1px solid red;
+    border-radius: 5px;
+    width: 40%;
+    margin-left: 30%;
 }
 
 .mesures {

@@ -196,3 +196,7 @@ body {
 .mesures {
     padding: 0px;
 }
+
+#nouvClient {
+    cursor: pointer;
+}

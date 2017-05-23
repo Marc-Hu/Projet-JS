@@ -10,11 +10,15 @@ $(document).ready(function() {
         var texte = $(this).val();
         //On test si celui-ci correspond bien à un nom/prénom ou à une date du type jj/mm/2017
         if ((/^[a-zA-Z]+$/.test(texte) && texte.length < 20) || (/^[0-3][0-9]\/[0-1][0-9]\/2017$/.test(texte) && texte.length == 10)) {
-            //Si le texte qui est dans la case correspond à une des conditions au dessus alors on cache l'erreur
-            $(this).parent().find(".incoText").show();
+            //Si le texte qui est dans la case correspond à une des conditions au dessus alors met en vert le champ texte
+            $(this).css('border', '1px solid green');
+            $(this).addClass('correcte');
+            $(this).removeClass('incorrecte');
         } else {
-            //Sinon on laisse le texte d'erreur
-            $(this).parent().find(".incoText").hide();
+            //Sinon on met le champ en rouge
+            $(this).css('border', '1px solid red');
+            $(this).addClass('incorrecte');
+            $(this).removeClass('correcte');
         }
     });
 
@@ -30,8 +34,8 @@ $(document).ready(function() {
             return;
         }
         //Si on a passé l'étape au-dessus alors on sait qu'on a pas de client en cours
-        //On vérifie maintenant que les erreurs pour les 3 cases ne sont pas visible
-        if (!($('#formClient .incotext').is(":visible"))) {
+        //On vérifie maintenant que toutes la classe sont correcte donc si il y'a un input avec la classe incorrecte alors on sort
+        if ($('#formClient .client').hasClass('incorrecte')) {
             //Si il y a eu moins une erreur qui est 'visible' alors on alerte l'utilisateur
             alert("Erreur! Certains champs ne sont pas complétés ou incorrect.");
             return;
@@ -44,7 +48,7 @@ $(document).ready(function() {
                 date: $('#date').val()
             };
             //On va insérer toutes ces informations dans des tableaux
-            var nom = $('<ul><li id="nomP"></li><li id="prenomP"></li><li id="dateP"></li></ul>');
+            var nom = $('<ul><li id="nomP"></li><li id="prenomP"></li><li id="dateP"></li></ul><span id="nouvClient">Nouveau client?</span>');
             nom.find('#nomP').text("Nom du client : " + client.nom.toUpperCase());
             nom.find('#prenomP').text("Prénom du client : " + client.prenom.toUpperCase());
             nom.find('#dateP').text("Date de dépôt : " + client.date);
@@ -172,11 +176,15 @@ $(document).ready(function() {
         //On vérifie si c'est bien un nombre non-nul et qui ne dépassent pas 5 caractères
         //Sa peut être un nombre entier ou décimal
         if ((/^[0-9]+$/.test(texte) || /^[0-9]+.[0-9]+$/.test(texte)) && texte.length < 5 && texte != 0) {
-            //On cache le message d'erreur si le texte entré correspond aux critères
-            $(this).parent().find($('.incoText')).show();
+            //On met en vert le champ de texte et on met la classe correcte
+            $(this).css('border', '1px solid green');
+            $(this).addClass('correcte');
+            $(this).removeClass('incorrecte');
         } else {
-            //Sinon si c'est incorrecte alors on affiche le message d'erreur
-            $(this).parent().find($('.incoText')).hide();
+            //Sinon si c'est incorrecte alors on met en rouge le champ texte
+            $(this).css('border', '1px solid red');
+            $(this).addClass('incorrecte');
+            $(this).removeClass('correcte');
         }
     });
 
@@ -184,7 +192,7 @@ $(document).ready(function() {
     $('.boutonEnre').click(function(e) {
         console.log("Bouton enregistré cliqué");
         //On regarde si tous les messages d'erreurs sont visibles ou non
-        if (!($(this).parent().find($('.incoText')).is(":visible"))) {
+        if ($(this).hasClass('incorrecte')) {
             //Si il y a au moins un message d'erreur qui est visible alors on informe l'utilisateur
             alert("Erreur! Les mesures que vous avez rentré sont soit incorrecte, soit incomplète.");
             return;
@@ -243,7 +251,7 @@ $(document).ready(function() {
     $('#recapCommande').on('click', '.modifMesure', function(e) {
         console.log("Appuie sur la touche modifier mesure");
         var ancienneVal = $(this).parent().find('valeurMesure').text();
-        //prompt permet d'afficher une fenêtre avec un input de type texte pour la nouvelle valeur
+        //prompt permet d'afficher une fenêtre avec un champ de type texte pour la nouvelle valeur
         var modif = prompt("Nouvelle mesure : ", ancienneVal);
         //Si l'utilisateur clique sur cancel alors on return
         if (modif === null)
@@ -253,6 +261,11 @@ $(document).ready(function() {
             return;
         } else
             $(this).parent().find('.valeurMesure').text(modif);
+    });
+
+    $('#recap').on('click', '#nouvClient', function(e) {
+        if (confirm("Est-vous sur de vouloir supprimer la commande?") == true)
+            location.reload();
     });
 
     console.log("La mise en place est finie. En attente d'événements...");

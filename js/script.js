@@ -71,7 +71,23 @@ $(document).ready(function() {
             alert("Erreur! Vous n'avez pas encore saisie de client. Veuillez saisir un client avant de pouvoir ajouter des commandes");
             return;
         }
-        if ($(this).parent().find($('.plusMoins')).first().is(":visible")) {
+        //Si on veut ouvrir le cadre de service et qu'il n'est pas visible
+        if ($(this).text() === "Services" && !($(this).parent().find('.plusMoins').first().is((":visible")))) {
+            $('#merceries').find('.plusMoins').hide();
+            $(this).parent().find('.plusMoins').first().show();
+            return;
+            //Si on veut ouvrir le cadre de mercerie et qu'il n'est pas visible
+        } else if ($(this).text() === "Merceries" && !($(this).parent().find('.plusMoins').first().is((":visible")))) {
+            $('#services').find('.plusMoins').hide();
+            $(this).parent().find('.plusMoins').first().show();
+            return;
+            //Si on veut fermer le cadre
+        } else if ($(this).parent().find('.plusMoins').first().is((":visible"))) {
+            $(this).parent().find('.plusMoins').first().hide();
+            return;
+        }
+        //Sinon si c'est c'est cadre normal
+        else if ($(this).parent().find($('.plusMoins')).first().is(":visible")) {
             $(this).parent().find($('.plusMoins')).first().hide();
         } else {
             $('.boutonDetail').hide();
@@ -188,8 +204,39 @@ $(document).ready(function() {
         }
     });
 
+    //Section mercerie, si on enregistre une commande
+    $('#merceries .boutonEnre').click(function(e) {
+        console.log("Bouton enregistré cliqué");
+        //On vérifie que la quantité est bonne
+        if ($(this).parent().find('.valeurQuantite').val() <= 0) {
+            alert("Erreur! La quantité que vous avez rentré est incorrecte.");
+            return;
+        }
+        //On demande à l'utilisateur de confirmer l'enregistrement de la commande
+        if (confirm("Confirmer l'enregistrement de la commande?") == false)
+            return;
+        //On récupère toutes les valeurs utiles pour l'enregistrement de la commande
+        var nomArticle = $(this).parent().parent().find('.boutonDev').text();
+        var quantite = $(this).parent().find('.valeurQuantite').val();
+        var prixUnit = $(this).parent().find('.prixUnitaire').text();
+        var sousTotal = parseInt(prixUnit) * parseInt(quantite);
+        var total = parseInt($('#totalCommande').text());
+        //On créer la liste de la commande
+        var article = $('<ul class="recapArticle"><li class="croixTD">Supprimer</li><li class="type"></li><li class="intitule"></li><li class="quantite"><span>Quantité :</span><span class="moins"><img class="imageMoins changeQuantite" src="./photos/moins.png"></span><input class="valeurQuantite" type="text" value=""><span class="plus"><img class="imagePlus changeQuantite" src="./photos/plus.png"></span><p>Prix unitaire TTC (en €) : <span class="prixUnite"></span></p><p class="prix">Total de l\'article TTC (en €) : <span class="prixTotalArticle"></span></p><hr class="hr"></li></ul>');
+        //On insère les différentes valeurs à l'intérieur de celle-ci
+        article.find('.type').text("Mercerie");
+        article.find('.intitule').text(nomArticle);
+        article.find('.valeurQuantite').val(quantite);
+        article.find('.prixUnite').text(prixUnit);
+        article.find('.prixTotalArticle').text(sousTotal);
+        //On met à jour le total de la commande
+        $('#totalCommande').text(sousTotal + total);
+        //On ajoute la liste dans les récapitulatifs de commande
+        $('#recapCommande').append(article);
+    });
+
     //Section Services, un des bouton d'enregistrement est cliqué
-    $('.boutonEnre').click(function(e) {
+    $('#services .boutonEnre').click(function(e) {
         console.log("Bouton enregistré cliqué");
         //On regarde si tous les messages d'erreurs sont visibles ou non
         if ($(this).hasClass('incorrecte')) {
@@ -222,7 +269,7 @@ $(document).ready(function() {
         //On récupère le prix à l'unité de l'article
         var prix = parseInt($(this).parent().find('.prixUnitaire').text());
         //On va créer des balises tableaux afin de mettre toutes les informations à l'intérieur
-        var choix = $('<ul class="recapArticle"><li class="croixTD">Supprimer</li><li class="type"></li><li class="intitule"></li><li class="lesMesures"></li><li class="quantite"><span>Quantité :</span><span class="moins"><img class="imageMoins changeQuantite" src="./photos/moins.png"></span><input class="valeurQuantite" type="text" value=""><span class="plus"><img class="imagePlus changeQuantite" src="./photos/plus.png"></span><p>Prix unitaire TTC (en €) : <span class="prixUnite"></span></p><p class="prix">Total de l\'article TTC (en €) : <span class="prixTotalArticle"></span></p></li></ul><hr class="hr">');
+        var choix = $('<ul class="recapArticle"><li class="croixTD">Supprimer</li><li class="type"></li><li class="intitule"></li><li class="lesMesures"></li><li class="quantite"><span>Quantité :</span><span class="moins"><img class="imageMoins changeQuantite" src="./photos/moins.png"></span><input class="valeurQuantite" type="text" value=""><span class="plus"><img class="imagePlus changeQuantite" src="./photos/plus.png"></span><p>Prix unitaire TTC (en €) : <span class="prixUnite"></span></p><p class="prix">Total de l\'article TTC (en €) : <span class="prixTotalArticle"></span></p><hr class="hr"></li></ul>');
         //On insère les différente valeurs récupérer auparavant
         choix.find('.type').text("Service");
         choix.find('.intitule').text(intitule);
@@ -263,8 +310,10 @@ $(document).ready(function() {
             $(this).parent().find('.valeurMesure').text(modif);
     });
 
+    //Section récapitulatif du client, si l'utilisateur veut un nouveau client
     $('#recap').on('click', '#nouvClient', function(e) {
-        if (confirm("Est-vous sur de vouloir supprimer la commande?") == true)
+        //On demande à l'utilisateur si il veut saisir un nouveau client
+        if (confirm("Est-vous sur de vouloir saisir un nouvelle client?") == true)
             location.reload();
     });
 

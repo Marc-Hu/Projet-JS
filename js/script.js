@@ -11,12 +11,10 @@ $(document).ready(function() {
         //On test si celui-ci correspond bien à un nom/prénom ou à une date du type jj/mm/2017
         if ((/^[a-zA-Z]+$/.test(texte) && texte.length < 20) || (/^[0-3][0-9]\/[0-1][0-9]\/2017$/.test(texte) && texte.length == 10)) {
             //Si le texte qui est dans la case correspond à une des conditions au dessus alors met en vert le champ texte
-            $(this).css('border', '1px solid green');
             $(this).addClass('correcte');
             $(this).removeClass('incorrecte');
         } else {
             //Sinon on met le champ en rouge
-            $(this).css('border', '1px solid red');
             $(this).addClass('incorrecte');
             $(this).removeClass('correcte');
         }
@@ -316,6 +314,10 @@ $(document).ready(function() {
         if (confirm("Est-vous sur de vouloir saisir un nouvelle client?") == true)
             location.reload();
     });
+
+    // $('#recap').mouseover(function(e) {
+
+    // });
 
     console.log("La mise en place est finie. En attente d'événements...");
 });

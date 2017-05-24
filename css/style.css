@@ -1,3 +1,7 @@
+/*
+Saisie d'un client
+*/
+
 #infoG {
     width: 45%;
     float: left;
@@ -5,6 +9,24 @@
     display: inline-block;
     text-align: center;
 }
+
+
+/*
+BODY
+*/
+
+ul {
+    list-style: none;
+}
+
+input {
+    margin-top: 10px;
+}
+
+
+/*
+Services et merceries
+*/
 
 #recap {
     width: 45%;
@@ -15,30 +37,15 @@
     text-align: center;
 }
 
-.incoText {
-    display: none;
-}
-
-.incoText,
-.incoQuantite {
-    color: red;
-    margin-left: 20px;
-}
-
 .valeurQuantite {
     width: 7%;
     text-align: center;
 }
 
 #choixServices {
-    width: 300px;
     float: left;
     margin: 0px;
     padding-bottom: 10px;
-}
-
-input {
-    margin-top: 10px;
 }
 
 .croixSuppr {
@@ -48,10 +55,6 @@ input {
 
 .croixTD {
     cursor: pointer;
-}
-
-ul {
-    list-style: none;
 }
 
 .boutonDev {
@@ -199,4 +202,18 @@ body {
 
 #nouvClient {
     cursor: pointer;
+}
+
+.correcte {
+    border: 2px solid green;
+    border-radius: 5px;
+}
+
+.incorrecte {
+    border: 2px solid red;
+    border-radius: 5px;
+}
+
+.type {
+    width: 250px;
 }

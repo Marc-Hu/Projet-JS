@@ -3,6 +3,9 @@ $(document).ready(function() {
     //On cache tous les formulaires
     console.log("Le document est pret");
 
+    $('#recap').hide();
+    $('#services').hide();
+    $('#merceries').hide();
     //Section client, lorsqu'on appuie sur une touche dans le formulaire
     $('#formClient .client').keyup(function(e) {
         console.log("touche appuyé dans le formulaire client");
@@ -52,11 +55,15 @@ $(document).ready(function() {
             nom.find('#dateP').text("Date de dépôt : " + client.date);
             //Et pour finir on ajoute le résultat dans la partie récapitulatif (droite)
             $('#client').append(nom);
-            var total = $('<p>Total (TTC): <span id="totalCommande">0</span>€</p>');
-            $('#recap').append(total);
+            var total = $('<p>Total (TTC): <span id="totalCommande">0</span>€</p><hr class="hr">');
+            $('#totalTTC').append(total);
         }
+        $('#recap').show();
+        $('#services').show();
+        $('#merceries').show();
     });
 
+    //Section formulaire dynamique, appuie sur un des sous-article
     $('.boutonSousArticle').click(function(e) {
         if ($(this).parent().find('.plusMoins').first().is(":visible")) {
             $(this).parent().find('.plusMoins').first().hide();
@@ -106,7 +113,7 @@ $(document).ready(function() {
     $('#recapCommande').on('click', '.croixTD', function(e) {
         console.log("Appuie sur le bouton supprimer");
         //On demande à l'utilisateur de confirmer son choix de suppression
-        if (confirm("Est-vous sur de vouloir supprimer la commande?") == true) {
+        if (confirm("Etes-vous sûr de vouloir supprimer la commande?") == true) {
             //On récupère le sous-total de l'article 
             var sousTotalSuppr = parseInt($(this).parent().find('.prixTotalArticle').text());
             //Et on le déduis de la valeur total de la commande
@@ -240,6 +247,7 @@ $(document).ready(function() {
         $('#totalCommande').text(sousTotal + total);
         //On ajoute la liste dans les récapitulatifs de commande
         $('#recapCommande').append(article);
+        $('#boutonEnreCom').show();
     });
 
     //Section Services, un des bouton d'enregistrement est cliqué
@@ -299,6 +307,7 @@ $(document).ready(function() {
         };
         //Dès qu'on a fini de tout rentrer alors on insère le tout dans la partie récapitulatif
         $('#recapCommande').append(choix);
+        $('#boutonEnreCom').show();
     });
 
     //Section des récapitulatifs des commandes, lorsque l'utilisateur veut modifier une mesure

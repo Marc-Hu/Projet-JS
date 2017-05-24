@@ -74,6 +74,7 @@ Récapitulatif commande
 }
 
 #client {
+    width: 80%;
     padding: 15px;
 }
 
@@ -238,6 +239,7 @@ BOUTONS
     background-color: #b2dfdb;
     margin-bottom: 10px;
     height: 40px;
+    display: none;
 }
 
 #boutonOK {

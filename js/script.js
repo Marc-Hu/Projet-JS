@@ -57,6 +57,15 @@ $(document).ready(function() {
         }
     });
 
+    $('.boutonSousArticle').click(function(e) {
+        if ($(this).parent().find('.plusMoins').first().is(":visible")) {
+            $(this).parent().find('.plusMoins').first().hide();
+        } else {
+            $('.boutonSousArticle').parent().find('.plusMoinsAr').hide();
+            $(this).parent().find('.plusMoins').first().show();
+        }
+    })
+
     //Section formulaire dynamique, appuie sur un des menus qui peut être développé 
     $('.boutonDev').click(function(e) {
         console.log("Bouton menu cliqué");

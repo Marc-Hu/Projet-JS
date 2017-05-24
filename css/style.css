@@ -10,10 +10,24 @@ Saisie d'un client
     text-align: center;
 }
 
+#formClient {
+    border: 1px solid black;
+    width: 80%;
+    border-radius: 50px;
+    display: inline-block;
+    text-align: center;
+    padding: 5px;
+    background-color: #c8e6c9;
+}
+
 
 /*
 BODY
 */
+
+body {
+    background-color: #00796b;
+}
 
 ul {
     list-style: none;
@@ -25,7 +39,7 @@ input {
 
 
 /*
-Services et merceries
+Récapitulatif commande
 */
 
 #recap {
@@ -42,37 +56,72 @@ Services et merceries
     text-align: center;
 }
 
-#choixServices {
-    float: left;
-    margin: 0px;
-    padding-bottom: 10px;
-}
-
 .croixSuppr {
     width: 25px;
     height: 25px;
 }
 
+#recapCommande li {
+    font-size: 15px;
+}
+
+#custom,
+#client {
+    border: 1px solid black;
+    display: inline-block;
+    text-align: center;
+    margin-top: 0px;
+}
+
+#client {
+    padding: 15px;
+}
+
+#client,
+#recapCommande {
+    border-radius: 50px;
+    background-color: #b2dfdb;
+}
+
+.mesures,
+#infoClient {
+    padding: 0px;
+}
+
+#recapCommande {
+    width: 70%;
+    text-align: center;
+    display: inline-block;
+    text-align: center;
+    border: 1px solid black;
+}
+
+.recapArticle {
+    padding: 0px;
+    margin: 15px;
+}
+
 .croixTD {
-    cursor: pointer;
+    color: red;
+    text-align: center;
+    border: 1px solid red;
+    border-radius: 5px;
+    width: 40%;
+    margin-left: 30%;
 }
 
-.boutonDev {
-    cursor: pointer;
-}
 
-.moins,
-.plus {
-    cursor: pointer;
+/*
+Article
+*/
+
+#choixServices {
+    float: left;
+    margin: 0px;
 }
 
 .plusMoins {
     display: none;
-}
-
-#boutonOK,
-.boutonEnre {
-    cursor: pointer;
 }
 
 .imageMoins,
@@ -90,57 +139,6 @@ Services et merceries
     margin-bottom: 0px;
 }
 
-#recapCommande li {
-    font-size: 15px;
-}
-
-.modifMesure {
-    cursor: pointer;
-}
-
-#formClient {
-    border: 1px solid black;
-    width: 80%;
-    border-radius: 50px;
-    display: inline-block;
-    text-align: center;
-    padding: 5px;
-    background-color: #c8e6c9;
-}
-
-#custom,
-#client {
-    border: 1px solid black;
-    display: inline-block;
-    text-align: center;
-    padding: 10px;
-    margin-top: 0px;
-}
-
-#services,
-#merceries {
-    border: 1px solid black;
-    display: inline-block;
-    text-align: center;
-    margin-top: 0px;
-}
-
-#client,
-#recapCommande {
-    border-radius: 50px;
-    background-color: #b2dfdb;
-}
-
-body {
-    background-color: #00796b;
-}
-
-#services,
-#merceries {
-    border-radius: 20px;
-    margin-top: 20px;
-}
-
 .vetement {
     border: 1px solid black;
     border-radius: 20px;
@@ -148,13 +146,15 @@ body {
     background-color: #b2dfdb;
 }
 
-#infoClient {
-    padding: 0px;
-}
-
 #services,
 #merceries {
+    border-radius: 20px;
+    margin-top: 20px;
     background-color: #dcedc8;
+    border: 1px solid black;
+    display: inline-block;
+    text-align: center;
+    margin-top: 10px;
 }
 
 #custom {
@@ -164,22 +164,54 @@ body {
 }
 
 .article {
-    padding: 10px;
     border: 1px solid white;
-    border-radius: 50px;
+    border-radius: 20px;
+    padding-bottom: 2.5px;
+    padding-top: 2.5px;
 }
 
-#recapCommande {
-    width: 70%;
-    text-align: center;
-    display: inline-block;
-    text-align: center;
-    border: 1px solid black;
+.type {
+    width: 250px;
 }
 
-.recapArticle {
-    padding: 0px;
-    margin: 15px;
+
+/*
+Forme curseur
+*/
+
+#boutonOK,
+#nouvClient,
+.boutonEnre,
+.modifMesure,
+.croixTD,
+.boutonDev,
+.moins,
+.plus {
+    cursor: pointer;
+}
+
+
+/*
+Saisie incorecte ou correcte
+*/
+
+.correcte {
+    border: 2px solid #81c784;
+    border-radius: 5px;
+}
+
+.incorrecte {
+    border: 2px solid #ef5350;
+    border-radius: 5px;
+}
+
+
+/*
+Les HR
+*/
+
+.hrArticle {
+    width: 40%;
 }
 
 .hr {
@@ -187,33 +219,17 @@ body {
     margin-left: 20%;
 }
 
-.croixTD {
-    color: red;
-    text-align: center;
-    border: 1px solid red;
-    border-radius: 5px;
-    width: 40%;
-    margin-left: 30%;
+
+/*
+BOUTONS
+*/
+
+#boutonOK {
+    background-color: #4db6ac;
+    border-radius: 10px;
 }
 
-.mesures {
-    padding: 0px;
-}
-
-#nouvClient {
-    cursor: pointer;
-}
-
-.correcte {
-    border: 2px solid green;
-    border-radius: 5px;
-}
-
-.incorrecte {
-    border: 2px solid red;
-    border-radius: 5px;
-}
-
-.type {
-    width: 250px;
+.boutonEnre {
+    border-radius: 10px;
+    background-color: #0277bd;
 }

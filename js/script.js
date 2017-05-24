@@ -315,9 +315,25 @@ $(document).ready(function() {
             location.reload();
     });
 
-    // $('#recap').mouseover(function(e) {
-
-    // });
+    $('#boutonEnreCom').click(function(e) {
+        var nom = $('#nomP').val();
+        if (nom == null) {
+            alert("Erreur! Vous n'avez pas encore saisie de client. Veuillez saisir un client avant de pouvoir ajouter des commandes");
+            return;
+        }
+        if ($('#totalCommande').text() === '0') {
+            alert("Erreur! Vous n'avez pas saisie d'article");
+            return;
+        }
+        if (confirm("Etes-vous sûr de vouloir terminer la commande?") == true) {
+            alert("Bravo! La commande a été sauvegardé avec succès!");
+            if (confirm("Saisir une nouvelle commande?") == true)
+                location.reload();
+            else
+                return;
+        } else
+            return;
+    });
 
     console.log("La mise en place est finie. En attente d'événements...");
 });

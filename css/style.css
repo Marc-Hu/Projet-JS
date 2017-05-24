@@ -179,6 +179,7 @@ Article
 Forme curseur
 */
 
+#boutonEnreCom,
 #boutonOK,
 #nouvClient,
 .boutonEnre,
@@ -224,12 +225,27 @@ Les HR
 BOUTONS
 */
 
-#boutonOK {
-    background-color: #4db6ac;
+#boutonEnreCom,
+#boutonOK,
+.boutonEnre {
+    border: 1px solid black;
+    width: 40%;
     border-radius: 10px;
 }
 
+#boutonEnreCom {
+    background-color: #b2dfdb;
+    margin-bottom: 10px;
+    height: 40px;
+}
+
+#boutonOK {
+    background-color: #b2dfdb;
+    height: 35px;
+}
+
 .boutonEnre {
-    border-radius: 10px;
     background-color: #0277bd;
+    height: 30px;
+    width: 60%;
 }

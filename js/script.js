@@ -3,16 +3,37 @@ $(document).ready(function() {
     //On cache tous les formulaires
     console.log("Le document est pret");
 
-    $('#recap').hide();
-    $('#services').hide();
-    $('#merceries').hide();
+    //Section saisie d'un client, lorsque la souris passe dans la zone 
+    $('#formClient').mouseover(function(e) {
+        //On récupère les informations du client
+        var client = {
+            nom: $('#nom').val(),
+            prenom: $('#prenom').val(),
+            date: $('#date').val()
+        };
+        //Et on regarde si ils sont correcte
+        if (/^[a-zA-Z]+[\-]*[a-zA-Z]*$/.test(client.nom) && client.nom.length < 20) {
+            $('#nom').addClass('correcte');
+            $('#nom').removeClass('rien');
+        }
+        if (/^[a-zA-Z]+[\-]*[a-zA-Z]*$/.test(client.prenom) && client.nom.length < 20) {
+            $('#prenom').addClass('correcte');
+            $('#prenom').removeClass('rien');
+        }
+        if (/^[0-3][0-9]\/[0-1][0-9]\/2017$/.test(client.date) && client.date.length == 10) {
+            $('#date').addClass('correcte');
+            $('#date').removeClass('rien');
+        }
+        //Cette fonction permet de palier au refresh f5
+    });
+
     //Section client, lorsqu'on appuie sur une touche dans le formulaire
     $('#formClient .client').keyup(function(e) {
         console.log("touche appuyé dans le formulaire client");
         //On récupère la valeur que l'utilisateur à tapé dans la case
         var texte = $(this).val();
         //On test si celui-ci correspond bien à un nom/prénom ou à une date du type jj/mm/2017
-        if ((/^[a-zA-Z]+$/.test(texte) && texte.length < 20) || (/^[0-3][0-9]\/[0-1][0-9]\/2017$/.test(texte) && texte.length == 10)) {
+        if ((/^[a-zA-Z]+[\-]*[a-zA-Z]*$/.test(texte) && texte.length < 20) || (/^[0-3][0-9]\/[0-1][0-9]\/2017$/.test(texte) && texte.length == 10)) {
             //Si le texte qui est dans la case correspond à une des conditions au dessus alors met en vert le champ texte
             $(this).addClass('correcte');
             $(this).removeClass('incorrecte');
@@ -21,6 +42,7 @@ $(document).ready(function() {
             $(this).addClass('incorrecte');
             $(this).removeClass('correcte');
         }
+        $(this).removeClass('rien');
     });
 
     //Section client, lorsqu'on appuie sur le bouton enregistrer afin d'enregistrer un nouveau client
@@ -36,7 +58,7 @@ $(document).ready(function() {
         }
         //Si on a passé l'étape au-dessus alors on sait qu'on a pas de client en cours
         //On vérifie maintenant que toutes la classe sont correcte donc si il y'a un input avec la classe incorrecte alors on sort
-        if ($('#formClient .client').hasClass('incorrecte')) {
+        if ($('#formClient .client').hasClass('incorrecte') || $('#formClient .client').hasClass('rien')) {
             //Si il y a eu moins une erreur qui est 'visible' alors on alerte l'utilisateur
             alert("Erreur! Certains champs ne sont pas complétés ou incorrect.");
             return;
@@ -58,9 +80,8 @@ $(document).ready(function() {
             var total = $('<p>Total (TTC): <span id="totalCommande">0</span>€</p><hr class="hr">');
             $('#totalTTC').append(total);
         }
-        $('#recap').show();
-        $('#services').show();
-        $('#merceries').show();
+        $('#priseClient').show();
+        $('#priseCommande').show();
     });
 
     //Section formulaire dynamique, appuie sur un des sous-article
@@ -76,15 +97,6 @@ $(document).ready(function() {
     //Section formulaire dynamique, appuie sur un des menus qui peut être développé 
     $('.boutonDev').click(function(e) {
         console.log("Bouton menu cliqué");
-        //Avant tout on vérifie qu'on ai bien enregistré un client avant d'arriver là
-        //On récupère le nom du client dans la partie récapitulatif
-        var nom = $('#nomP').val();
-        //Si le nom est 'null' c'est à dire si il n'y a pas de nom dans la partie récapitulatif
-        if (nom == null) {
-            //Alors on informe l'utilisateur qu'il n'a pas encore saisie de client et qu'il faut en saisir un avant tout
-            alert("Erreur! Vous n'avez pas encore saisie de client. Veuillez saisir un client avant de pouvoir ajouter des commandes");
-            return;
-        }
         //Si on veut ouvrir le cadre de service et qu'il n'est pas visible
         if ($(this).text() === "Services" && !($(this).parent().find('.plusMoins').first().is((":visible")))) {
             $('#merceries').find('.plusMoins').hide();
@@ -122,10 +134,7 @@ $(document).ready(function() {
             $(this).parent().remove();
             //On affecte le nouveau Total
             $('#totalCommande').text(nouvTotal);
-            //Si la valeur du total est 'NaN' ce qui arrive lorsqu'on revient à 0
-            if ($('#totalCommande').text() == 'NaN')
-            //Alors On affecte 0 à la place de 'NaN'
-                $('#totalCommande').text(0);
+            $('#boutonEnreCom').hide();
         }
     });
 
@@ -149,7 +158,7 @@ $(document).ready(function() {
             //Et on écrase l'ancienne valeur du Total par le nouveau
             $('#totalCommande').text(ancienTotal + (prixUnit * nouvQuantite));
         }
-    })
+    });
 
     //Section récapitulatif, modification de la quantité
     $('body').on('click', '.quantite .changeQuantite', function(e) {
@@ -236,9 +245,9 @@ $(document).ready(function() {
         var sousTotal = parseInt(prixUnit) * parseInt(quantite);
         var total = parseInt($('#totalCommande').text());
         //On créer la liste de la commande
-        var article = $('<ul class="recapArticle"><li class="croixTD">Supprimer</li><li class="type"></li><li class="intitule"></li><li class="quantite"><span>Quantité :</span><span class="moins"><img class="imageMoins changeQuantite" src="./photos/moins.png"></span><input class="valeurQuantite" type="text" value=""><span class="plus"><img class="imagePlus changeQuantite" src="./photos/plus.png"></span><p>Prix unitaire TTC (en €) : <span class="prixUnite"></span></p><p class="prix">Total de l\'article TTC (en €) : <span class="prixTotalArticle"></span></p><hr class="hr"></li></ul>');
+        var article = $('<ul class="recapArticle"><li class="croixTD">Supprimer</li><li class="typeOffre"></li><li class="intitule"></li><li class="quantite"><span>Quantité :</span><span class="moins"><img class="imageMoins changeQuantite" src="./photos/moins.png"></span><input class="valeurQuantite" type="text" value=""><span class="plus"><img class="imagePlus changeQuantite" src="./photos/plus.png"></span><p>Prix unitaire TTC (en €) : <span class="prixUnite"></span></p><p class="prix">Total de l\'article TTC (en €) : <span class="prixTotalArticle"></span></p><hr class="hr"></li></ul>');
         //On insère les différentes valeurs à l'intérieur de celle-ci
-        article.find('.type').text("Mercerie");
+        article.find('.typeOffre').text("Mercerie");
         article.find('.intitule').text(nomArticle);
         article.find('.valeurQuantite').val(quantite);
         article.find('.prixUnite').text(prixUnit);
@@ -284,9 +293,9 @@ $(document).ready(function() {
         //On récupère le prix à l'unité de l'article
         var prix = parseInt($(this).parent().find('.prixUnitaire').text());
         //On va créer des balises tableaux afin de mettre toutes les informations à l'intérieur
-        var choix = $('<ul class="recapArticle"><li class="croixTD">Supprimer</li><li class="type"></li><li class="intitule"></li><li class="lesMesures"></li><li class="quantite"><span>Quantité :</span><span class="moins"><img class="imageMoins changeQuantite" src="./photos/moins.png"></span><input class="valeurQuantite" type="text" value=""><span class="plus"><img class="imagePlus changeQuantite" src="./photos/plus.png"></span><p>Prix unitaire TTC (en €) : <span class="prixUnite"></span></p><p class="prix">Total de l\'article TTC (en €) : <span class="prixTotalArticle"></span></p><hr class="hr"></li></ul>');
+        var choix = $('<ul class="recapArticle"><li class="croixTD">Supprimer</li><li class="typeOffre"></li><li class="intitule"></li><li class="lesMesures"></li><li class="quantite"><span>Quantité :</span><span class="moins"><img class="imageMoins changeQuantite" src="./photos/moins.png"></span><input class="valeurQuantite" type="text" value=""><span class="plus"><img class="imagePlus changeQuantite" src="./photos/plus.png"></span><p>Prix unitaire TTC (en €) : <span class="prixUnite"></span></p><p class="prix">Total de l\'article TTC (en €) : <span class="prixTotalArticle"></span></p><hr class="hr"></li></ul>');
         //On insère les différente valeurs récupérer auparavant
-        choix.find('.type').text("Service");
+        choix.find('.typeOffre').text("Service");
         choix.find('.intitule').text(intitule);
         choix.find('.valeurQuantite').val(quantite);
         choix.find('.prixUnite').text(prix);
@@ -333,12 +342,8 @@ $(document).ready(function() {
             location.reload();
     });
 
+
     $('#boutonEnreCom').click(function(e) {
-        var nom = $('#nomP').val();
-        if (nom == null) {
-            alert("Erreur! Vous n'avez pas encore saisie de client. Veuillez saisir un client avant de pouvoir ajouter des commandes");
-            return;
-        }
         if ($('#totalCommande').text() === '0') {
             alert("Erreur! Vous n'avez pas saisie d'article");
             return;

@@ -6,18 +6,22 @@ Saisie d'un client
     width: 45%;
     float: left;
     margin-left: 5%;
-    display: inline-block;
-    text-align: center;
 }
 
 #formClient {
     border: 1px solid black;
-    width: 80%;
+    width: 90%;
     border-radius: 50px;
     display: inline-block;
     text-align: center;
     padding: 5px;
     background-color: #c8e6c9;
+}
+
+.rien {
+    border: 2px solid #78909c;
+    border-radius: 5px;
+    height: 25px;
 }
 
 
@@ -41,6 +45,10 @@ input {
 /*
 Récapitulatif commande
 */
+
+#priseClient {
+    display: none;
+}
 
 #recap {
     width: 45%;
@@ -90,7 +98,7 @@ Récapitulatif commande
 }
 
 #recapCommande {
-    width: 70%;
+    width: 85%;
     text-align: center;
     display: inline-block;
     text-align: center;
@@ -115,6 +123,10 @@ Récapitulatif commande
 /*
 Article
 */
+
+#priseCommande {
+    display: none;
+}
 
 #choixServices {
     float: left;
@@ -165,7 +177,7 @@ Article
 }
 
 .article {
-    border: 1px solid white;
+    border: 1px solid black;
     border-radius: 20px;
     padding-bottom: 2.5px;
     padding-top: 2.5px;
@@ -201,11 +213,13 @@ Saisie incorecte ou correcte
 .correcte {
     border: 2px solid #81c784;
     border-radius: 5px;
+    height: 25px;
 }
 
 .incorrecte {
     border: 2px solid #ef5350;
     border-radius: 5px;
+    height: 25px;
 }
 
 
@@ -218,8 +232,8 @@ Les HR
 }
 
 .hr {
-    width: 60%;
-    margin-left: 20%;
+    width: 80%;
+    margin-left: 10%;
 }
 
 

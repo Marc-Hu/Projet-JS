@@ -14,423 +14,582 @@
     <div id="infoG">
         <form id="formClient">
             <h2>Information générale du client</h2>
-            <div>
-                <span>Nom :</span>
-                <input class="client" id="nom" type="text" placeholder="nom"></br>
-            </div>
-            <div>
-                <span>Prénom :</span>
-                <input class="client" id="prenom" type="text" placeholder="prenom"></br>
-            </div>
-            <div>
-                <span>Date de dépôt :</span>
-                <input class="client" id="date" type="text" placeholder="date de dépôt jj/mm/yyyy"></br>
+            <div id="saisieClient">
+                <div>
+                    <span>Nom :</span>
+                    <input class="client rien" id="nom" type="text" placeholder="nom"></br>
+                </div>
+                <div>
+                    <span>Prénom :</span>
+                    <input class="client rien" id="prenom" type="text" placeholder="prenom"></br>
+                </div>
+                <div>
+                    <span>Date de dépôt :</span>
+                    <input class="client rien" id="date" type="text" placeholder="date de dépôt jj/mm/yyyy"></br>
+                </div>
             </div>
             <input id="boutonOK" type="button" value="Enregistrer">
         </form>
         </br>
-        <div id="services" class="type">
-            <p class="boutonDev">Services</p>
-            <div class="plusMoins vetement type" id="choixServices">
-                <div>
-                    <p class="boutonSousArticle">Bas</p>
-                    <div class="plusMoinsAr plusMoins">
-                        <div id="custom" class="type">
-                            <p class="boutonDev">Customisation (forme)</p>
-                            <div class="plusMoins">
-                                <div class="article">
-                                    <p class="boutonDev">Cigarette</p>
-                                    <div class="plusMoins boutonDetail">
-                                        <hr class="hrArticle">
-                                        <span class="descMesure">Mesure Cuisse (cm)</span>
-                                        <input class="mesure" type="text" placeholder="Mesure cuisse (cm)"></br>
-                                        <div class="quantite">
-                                            <span>Quantité :</span>
-                                            <span class="moins"><img class="imageMoins changeQuantite" src="./photos/moins.png"></span>
-                                            <input class="valeurQuantite" type="text" value="1">
-                                            <span class="plus"><img class="imagePlus changeQuantite" src="./photos/plus.png"></span>
-                                        </div>
-                                        <p class="prix">Prix unitaire TTC (en €) : <span class="prixUnitaire">10</span></p>
-                                        <input class="boutonEnre" type="button" value="Enregistrer mesure">
-                                    </div>
-                                </div>
-                                </br>
-                                <div class="article">
-                                    <p class="boutonDev">Slim</p>
-                                    <div class="plusMoins boutonDetail">
-                                        <hr class="hrArticle">
-                                        <span class="descMesure">Mesure Cuisse (cm)</span>
-                                        <div>
+        <div id="priseCommande">
+            <div id="services" class="type">
+                <p class="boutonDev">Services</p>
+                <div class="plusMoins vetement type" id="choixServices">
+                    <div>
+                        <p class="boutonSousArticle">Bas</p>
+                        <div class="plusMoinsAr plusMoins">
+                            <div id="custom" class="type">
+                                <p class="boutonDev">Customisation (forme)</p>
+                                <div class="plusMoins">
+                                    <div class="article">
+                                        <p class="boutonDev">Cigarette</p>
+                                        <div class="plusMoins boutonDetail">
+                                            <hr class="hrArticle">
+                                            <span class="descMesure">Mesure Cuisse (cm)</span>
                                             <input class="mesure" type="text" placeholder="Mesure cuisse (cm)"></br>
+                                            <div class="quantite">
+                                                <span>Quantité :</span>
+                                                <span class="moins"><img class="imageMoins changeQuantite" src="./photos/moins.png"></span>
+                                                <input class="valeurQuantite" type="text" value="1">
+                                                <span class="plus"><img class="imagePlus changeQuantite" src="./photos/plus.png"></span>
+                                            </div>
+                                            <p class="prix">Prix unitaire TTC (en €) : <span class="prixUnitaire">10</span></p>
+                                            <input class="boutonEnre" type="button" value="Enregistrer mesure">
                                         </div>
-                                        </br>
-                                        <span class="descMesure">Mesure Genoux (cm)</span>
-                                        <div>
-                                            <input class="mesure" type="text" placeholder="Mesure genoux (cm)"></br>
+                                    </div>
+                                    </br>
+                                    <div class="article">
+                                        <p class="boutonDev">Slim</p>
+                                        <div class="plusMoins boutonDetail">
+                                            <hr class="hrArticle">
+                                            <span class="descMesure">Mesure Cuisse (cm)</span>
+                                            <div>
+                                                <input class="mesure" type="text" placeholder="Mesure cuisse (cm)"></br>
+                                            </div>
+                                            </br>
+                                            <span class="descMesure">Mesure Genoux (cm)</span>
+                                            <div>
+                                                <input class="mesure" type="text" placeholder="Mesure genoux (cm)"></br>
+                                            </div>
+                                            </br>
+                                            <span class="descMesure">Mesure Talon (cm)</span>
+                                            <div>
+                                                <input class="mesure" type="text" placeholder="Mesure talon (cm)"></br>
+                                            </div>
+                                            <div class="quantite">
+                                                <span>Quantité : </span>
+                                                <span class="moins"><img class="imageMoins changeQuantite" src="./photos/moins.png"></span>
+                                                <input class="valeurQuantite" type="text" value="1">
+                                                <span class="plus"><img class="imagePlus changeQuantite" src="./photos/plus.png"></span>
+                                            </div>
+                                            <p class="prix">Prix unitaire TTC (en €) : <span class="prixUnitaire">10</span></p>
+                                            <input class="boutonEnre" type="button" value="Enregistrer mesures">
                                         </div>
-                                        </br>
-                                        <span class="descMesure">Mesure Talon (cm)</span>
-                                        <div>
-                                            <input class="mesure" type="text" placeholder="Mesure talon (cm)"></br>
+                                    </div>
+                                    </br>
+                                    <div class="article">
+                                        <p class="boutonDev">Cuve</p>
+                                        <div class="plusMoins boutonDetail">
+                                            <hr class="hrArticle">
+                                            <span class="descMesure">Mesure Cuisse (cm)</span>
+                                            <div>
+                                                <input class="mesure" type="text" placeholder="Mesure cuisse (cm)"></br>
+                                            </div>
+                                            </br>
+                                            <span class="descMesure">Mesure Genoux (cm)</span>
+                                            <div>
+                                                <input class="mesure" type="text" placeholder="Mesure genoux (cm)"></br>
+                                            </div>
+                                            </br>
+                                            <span class="descMesure">Mesure Talon (cm)</span>
+                                            <div>
+                                                <input class="mesure" type="text" placeholder="Mesure talon (cm)"></br>
+                                            </div>
+                                            <div class="quantite">
+                                                <span>Quantité : </span>
+                                                <span class="moins"><img class="imageMoins changeQuantite" src="./photos/moins.png"></span>
+                                                <input class="valeurQuantite" type="text" value="1">
+                                                <span class="plus"><img class="imagePlus changeQuantite" src="./photos/plus.png"></span>
+                                            </div>
+                                            <p class="prix">Prix unitaire TTC (en €) : <span class="prixUnitaire">10</span></p>
+                                            <input class="boutonEnre" type="button" value="Enregistrer mesures">
                                         </div>
-                                        <div class="quantite">
-                                            <span>Quantité : </span>
-                                            <span class="moins"><img class="imageMoins changeQuantite" src="./photos/moins.png"></span>
-                                            <input class="valeurQuantite" type="text" value="1">
-                                            <span class="plus"><img class="imagePlus changeQuantite" src="./photos/plus.png"></span>
-                                        </div>
-                                        <p class="prix">Prix unitaire TTC (en €) : <span class="prixUnitaire">10</span></p>
-                                        <input class="boutonEnre" type="button" value="Enregistrer mesures">
                                     </div>
                                 </div>
-                                </br>
-                                <div class="article">
-                                    <p class="boutonDev">Cuve</p>
-                                    <div class="plusMoins boutonDetail">
-                                        <hr class="hrArticle">
-                                        <span class="descMesure">Mesure Cuisse (cm)</span>
-                                        <div>
-                                            <input class="mesure" type="text" placeholder="Mesure cuisse (cm)"></br>
-                                        </div>
-                                        </br>
-                                        <span class="descMesure">Mesure Genoux (cm)</span>
-                                        <div>
-                                            <input class="mesure" type="text" placeholder="Mesure genoux (cm)"></br>
-                                        </div>
-                                        </br>
-                                        <span class="descMesure">Mesure Talon (cm)</span>
-                                        <div>
-                                            <input class="mesure" type="text" placeholder="Mesure talon (cm)"></br>
-                                        </div>
-                                        <div class="quantite">
-                                            <span>Quantité : </span>
-                                            <span class="moins"><img class="imageMoins changeQuantite" src="./photos/moins.png"></span>
-                                            <input class="valeurQuantite" type="text" value="1">
-                                            <span class="plus"><img class="imagePlus changeQuantite" src="./photos/plus.png"></span>
-                                        </div>
-                                        <p class="prix">Prix unitaire TTC (en €) : <span class="prixUnitaire">10</span></p>
-                                        <input class="boutonEnre" type="button" value="Enregistrer mesures">
+                            </div>
+                            </br>
+                            <div class="article">
+                                <p class="boutonDev">Ourlet</p>
+                                <div class="plusMoins boutonDetail">
+                                    <hr class="hrArticle">
+                                    <p class="descMesure">Longueur (cm)</p>
+                                    <input class="mesure" type="text" placeholder="Longueur (cm)"></br>
+                                    <div class="quantite">
+                                        <span>Quantité : </span>
+                                        <span class="moins"><img class="imageMoins changeQuantite" src="./photos/moins.png"></span>
+                                        <input class="valeurQuantite" type="text" value="1">
+                                        <span class="plus"><img class="imagePlus changeQuantite" src="./photos/plus.png"></span>
                                     </div>
+                                    <p class="prix">Prix unitaire TTC (en €) : <span class="prixUnitaire">5</span></p>
+                                    <input class="boutonEnre" type="button" value="Enregistrer longueur">
                                 </div>
                             </div>
-                        </div>
-                        </br>
-                        <div class="article">
-                            <p class="boutonDev">Ourlet</p>
-                            <div class="plusMoins boutonDetail">
-                                <hr class="hrArticle">
-                                <p class="descMesure">Longueur (cm)</p>
-                                <input class="mesure" type="text" placeholder="Longueur (cm)"></br>
-                                <div class="quantite">
-                                    <span>Quantité : </span>
-                                    <span class="moins"><img class="imageMoins changeQuantite" src="./photos/moins.png"></span>
-                                    <input class="valeurQuantite" type="text" value="1">
-                                    <span class="plus"><img class="imagePlus changeQuantite" src="./photos/plus.png"></span>
+                            </br>
+                            <div class="article">
+                                <p class="boutonDev">Allonger</p>
+                                <div class="plusMoins boutonDetail">
+                                    <hr class="hrArticle">
+                                    <p class="descMesure">Longueur (cm)</p>
+                                    <input class="mesure" type="text" placeholder="Longueur (cm)"></br>
+                                    <div class="quantite">
+                                        <span>Quantité : </span>
+                                        <span class="moins"><img class="imageMoins changeQuantite" src="./photos/moins.png"></span>
+                                        <input class="valeurQuantite" type="text" value="1">
+                                        <span class="plus"><img class="imagePlus changeQuantite" src="./photos/plus.png"></span>
+                                    </div>
+                                    <p class="prix">Prix unitaire TTC (en €) : <span class="prixUnitaire">10</span></p>
+                                    <input class="boutonEnre" type="button" value="Enregistrer longueur">
                                 </div>
-                                <p class="prix">Prix unitaire TTC (en €) : <span class="prixUnitaire">5</span></p>
-                                <input class="boutonEnre" type="button" value="Enregistrer longueur">
                             </div>
-                        </div>
-                        </br>
-                        <div class="article">
-                            <p class="boutonDev">Allonger</p>
-                            <div class="plusMoins boutonDetail">
-                                <hr class="hrArticle">
-                                <p class="descMesure">Longueur (cm)</p>
-                                <input class="mesure" type="text" placeholder="Longueur (cm)"></br>
-                                <div class="quantite">
-                                    <span>Quantité : </span>
-                                    <span class="moins"><img class="imageMoins changeQuantite" src="./photos/moins.png"></span>
-                                    <input class="valeurQuantite" type="text" value="1">
-                                    <span class="plus"><img class="imagePlus changeQuantite" src="./photos/plus.png"></span>
+                            </br>
+                            <div class="article">
+                                <p class="boutonDev">Réduire</p>
+                                <div class="plusMoins boutonDetail">
+                                    <hr class="hrArticle">
+                                    <p class="descMesure">Longueur (cm)</p>
+                                    <input class="mesure" type="text" placeholder="Longueur (cm)"></br>
+                                    <div class="quantite">
+                                        <span>Quantité : </span>
+                                        <span class="moins"><img class="imageMoins changeQuantite" src="./photos/moins.png"></span>
+                                        <input class="valeurQuantite" type="text" value="1">
+                                        <span class="plus"><img class="imagePlus changeQuantite" src="./photos/plus.png"></span>
+                                    </div>
+                                    <p class="prix">Prix unitaire TTC (en €) : <span class="prixUnitaire">10</span></p>
+                                    <input class="boutonEnre" type="button" value="Enregistrer longueur">
                                 </div>
-                                <p class="prix">Prix unitaire TTC (en €) : <span class="prixUnitaire">10</span></p>
-                                <input class="boutonEnre" type="button" value="Enregistrer longueur">
-                            </div>
-                        </div>
-                        </br>
-                        <div class="article">
-                            <p class="boutonDev">Réduire</p>
-                            <div class="plusMoins boutonDetail">
-                                <hr class="hrArticle">
-                                <p class="descMesure">Longueur (cm)</p>
-                                <input class="mesure" type="text" placeholder="Longueur (cm)"></br>
-                                <div class="quantite">
-                                    <span>Quantité : </span>
-                                    <span class="moins"><img class="imageMoins changeQuantite" src="./photos/moins.png"></span>
-                                    <input class="valeurQuantite" type="text" value="1">
-                                    <span class="plus"><img class="imagePlus changeQuantite" src="./photos/plus.png"></span>
-                                </div>
-                                <p class="prix">Prix unitaire TTC (en €) : <span class="prixUnitaire">10</span></p>
-                                <input class="boutonEnre" type="button" value="Enregistrer longueur">
                             </div>
                         </div>
                     </div>
-                </div>
-                <hr class="hrArticle">
-                <div>
-                    <p class="boutonSousArticle">Haut</p>
-                    <div class="plusMoinsAr plusMoins">
-                        <div class="article">
-                            <p class="boutonDev">Ourlet</p>
-                            <div class="plusMoins boutonDetail">
-                                <hr class="hrArticle">
-                                <p class="descMesure">Longueur (cm)</p>
-                                <input class="mesure" type="text" placeholder="Longueur (cm)"></br>
-                                <div class="quantite">
-                                    <span>Quantité : </span>
-                                    <span class="moins"><img class="imageMoins changeQuantite" src="./photos/moins.png"></span>
-                                    <input class="valeurQuantite" type="text" value="1">
-                                    <span class="plus"><img class="imagePlus changeQuantite" src="./photos/plus.png"></span>
+                    <hr class="hrArticle">
+                    <div>
+                        <p class="boutonSousArticle">Haut</p>
+                        <div class="plusMoinsAr plusMoins">
+                            <div class="article">
+                                <p class="boutonDev">Ourlet</p>
+                                <div class="plusMoins boutonDetail">
+                                    <hr class="hrArticle">
+                                    <p class="descMesure">Longueur (cm)</p>
+                                    <input class="mesure" type="text" placeholder="Longueur (cm)"></br>
+                                    <div class="quantite">
+                                        <span>Quantité : </span>
+                                        <span class="moins"><img class="imageMoins changeQuantite" src="./photos/moins.png"></span>
+                                        <input class="valeurQuantite" type="text" value="1">
+                                        <span class="plus"><img class="imagePlus changeQuantite" src="./photos/plus.png"></span>
+                                    </div>
+                                    <p class="prix">Prix unitaire TTC (en €) : <span class="prixUnitaire">5</span></p>
+                                    <input class="boutonEnre" type="button" value="Enregistrer longueur">
                                 </div>
-                                <p class="prix">Prix unitaire TTC (en €) : <span class="prixUnitaire">5</span></p>
-                                <input class="boutonEnre" type="button" value="Enregistrer longueur">
                             </div>
-                        </div>
-                        </br>
-                        <div class="article">
-                            <p class="boutonDev">Allonger Manche</p>
-                            <div class="plusMoins boutonDetail">
-                                <hr class="hrArticle">
-                                <p class="descMesure">Longueur (cm)</p>
-                                <input class="mesure" type="text" placeholder="Longueur (cm)"></br>
-                                <div class="quantite">
-                                    <span>Quantité : </span>
-                                    <span class="moins"><img class="imageMoins changeQuantite" src="./photos/moins.png"></span>
-                                    <input class="valeurQuantite" type="text" value="1">
-                                    <span class="plus"><img class="imagePlus changeQuantite" src="./photos/plus.png"></span>
+                            </br>
+                            <div class="article">
+                                <p class="boutonDev">Allonger Manche</p>
+                                <div class="plusMoins boutonDetail">
+                                    <hr class="hrArticle">
+                                    <p class="descMesure">Longueur (cm)</p>
+                                    <input class="mesure" type="text" placeholder="Longueur (cm)"></br>
+                                    <div class="quantite">
+                                        <span>Quantité : </span>
+                                        <span class="moins"><img class="imageMoins changeQuantite" src="./photos/moins.png"></span>
+                                        <input class="valeurQuantite" type="text" value="1">
+                                        <span class="plus"><img class="imagePlus changeQuantite" src="./photos/plus.png"></span>
+                                    </div>
+                                    <p class="prix">Prix unitaire TTC (en €) : <span class="prixUnitaire">8</span></p>
+                                    <input class="boutonEnre" type="button" value="Enregistrer longueur">
                                 </div>
-                                <p class="prix">Prix unitaire TTC (en €) : <span class="prixUnitaire">10</span></p>
-                                <input class="boutonEnre" type="button" value="Enregistrer longueur">
                             </div>
-                        </div>
-                        </br>
-                        <div class="article">
-                            <p class="boutonDev">Allonger Taille</p>
-                            <div class="plusMoins boutonDetail">
-                                <hr class="hrArticle">
-                                <p class="descMesure">Longueur (cm)</p>
-                                <input class="mesure" type="text" placeholder="Longueur (cm)"></br>
-                                <div class="quantite">
-                                    <span>Quantité : </span>
-                                    <span class="moins"><img class="imageMoins changeQuantite" src="./photos/moins.png"></span>
-                                    <input class="valeurQuantite" type="text" value="1">
-                                    <span class="plus"><img class="imagePlus changeQuantite" src="./photos/plus.png"></span>
+                            </br>
+                            <div class="article">
+                                <p class="boutonDev">Allonger Taille</p>
+                                <div class="plusMoins boutonDetail">
+                                    <hr class="hrArticle">
+                                    <p class="descMesure">Longueur (cm)</p>
+                                    <input class="mesure" type="text" placeholder="Longueur (cm)"></br>
+                                    <div class="quantite">
+                                        <span>Quantité : </span>
+                                        <span class="moins"><img class="imageMoins changeQuantite" src="./photos/moins.png"></span>
+                                        <input class="valeurQuantite" type="text" value="1">
+                                        <span class="plus"><img class="imagePlus changeQuantite" src="./photos/plus.png"></span>
+                                    </div>
+                                    <p class="prix">Prix unitaire TTC (en €) : <span class="prixUnitaire">15</span></p>
+                                    <input class="boutonEnre" type="button" value="Enregistrer longueur">
                                 </div>
-                                <p class="prix">Prix unitaire TTC (en €) : <span class="prixUnitaire">10</span></p>
-                                <input class="boutonEnre" type="button" value="Enregistrer longueur">
                             </div>
-                        </div>
-                        </br>
-                        <div class="article">
-                            <p class="boutonDev">Réduire Manche</p>
-                            <div class="plusMoins boutonDetail">
-                                <hr class="hrArticle">
-                                <p class="descMesure">Longueur (cm)</p>
-                                <input class="mesure" type="text" placeholder="Longueur (cm)"></br>
-                                <div class="quantite">
-                                    <span>Quantité : </span>
-                                    <span class="moins"><img class="imageMoins changeQuantite" src="./photos/moins.png"></span>
-                                    <input class="valeurQuantite" type="text" value="1">
-                                    <span class="plus"><img class="imagePlus changeQuantite" src="./photos/plus.png"></span>
+                            </br>
+                            <div class="article">
+                                <p class="boutonDev">Réduire Manche</p>
+                                <div class="plusMoins boutonDetail">
+                                    <hr class="hrArticle">
+                                    <p class="descMesure">Longueur (cm)</p>
+                                    <input class="mesure" type="text" placeholder="Longueur (cm)"></br>
+                                    <div class="quantite">
+                                        <span>Quantité : </span>
+                                        <span class="moins"><img class="imageMoins changeQuantite" src="./photos/moins.png"></span>
+                                        <input class="valeurQuantite" type="text" value="1">
+                                        <span class="plus"><img class="imagePlus changeQuantite" src="./photos/plus.png"></span>
+                                    </div>
+                                    <p class="prix">Prix unitaire TTC (en €) : <span class="prixUnitaire">8</span></p>
+                                    <input class="boutonEnre" type="button" value="Enregistrer longueur">
                                 </div>
-                                <p class="prix">Prix unitaire TTC (en €) : <span class="prixUnitaire">10</span></p>
-                                <input class="boutonEnre" type="button" value="Enregistrer longueur">
                             </div>
-                        </div>
-                        </br>
-                        <div class="article">
-                            <p class="boutonDev">Réduire Taille</p>
-                            <div class="plusMoins boutonDetail">
-                                <hr class="hrArticle">
-                                <p class="descMesure">Longueur (cm)</p>
-                                <input class="mesure" type="text" placeholder="Longueur (cm)"></br>
-                                <div class="quantite">
-                                    <span>Quantité : </span>
-                                    <span class="moins"><img class="imageMoins changeQuantite" src="./photos/moins.png"></span>
-                                    <input class="valeurQuantite" type="text" value="1">
-                                    <span class="plus"><img class="imagePlus changeQuantite" src="./photos/plus.png"></span>
+                            </br>
+                            <div class="article">
+                                <p class="boutonDev">Réduire Taille</p>
+                                <div class="plusMoins boutonDetail">
+                                    <hr class="hrArticle">
+                                    <p class="descMesure">Longueur (cm)</p>
+                                    <input class="mesure" type="text" placeholder="Longueur (cm)"></br>
+                                    <div class="quantite">
+                                        <span>Quantité : </span>
+                                        <span class="moins"><img class="imageMoins changeQuantite" src="./photos/moins.png"></span>
+                                        <input class="valeurQuantite" type="text" value="1">
+                                        <span class="plus"><img class="imagePlus changeQuantite" src="./photos/plus.png"></span>
+                                    </div>
+                                    <p class="prix">Prix unitaire TTC (en €) : <span class="prixUnitaire">12</span></p>
+                                    <input class="boutonEnre" type="button" value="Enregistrer longueur">
                                 </div>
-                                <p class="prix">Prix unitaire TTC (en €) : <span class="prixUnitaire">10</span></p>
-                                <input class="boutonEnre" type="button" value="Enregistrer longueur">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <hr class="hrArticle">
-                <div>
-                    <p class="boutonSousArticle">Manteau</p>
-                    <div class="plusMoinsAr plusMoins">
-                        <div class="article">
-                            <p class="boutonDev">Ourlet Manche</p>
-                            <div class="plusMoins boutonDetail">
-                                <hr class="hrArticle">
-                                <p class="descMesure">Longueur (cm)</p>
-                                <input class="mesure" type="text" placeholder="Longueur (cm)"></br>
-                                <div class="quantite">
-                                    <span>Quantité : </span>
-                                    <span class="moins"><img class="imageMoins changeQuantite" src="./photos/moins.png"></span>
-                                    <input class="valeurQuantite" type="text" value="1">
-                                    <span class="plus"><img class="imagePlus changeQuantite" src="./photos/plus.png"></span>
-                                </div>
-                                <p class="prix">Prix unitaire TTC (en €) : <span class="prixUnitaire">5</span></p>
-                                <input class="boutonEnre" type="button" value="Enregistrer longueur">
-                            </div>
-                        </div>
-                        </br>
-                        <div class="article">
-                            <p class="boutonDev">Allonger Manche</p>
-                            <div class="plusMoins boutonDetail">
-                                <hr class="hrArticle">
-                                <p class="descMesure">Longueur (cm)</p>
-                                <input class="mesure" type="text" placeholder="Longueur (cm)"></br>
-                                <div class="quantite">
-                                    <span>Quantité : </span>
-                                    <span class="moins"><img class="imageMoins changeQuantite" src="./photos/moins.png"></span>
-                                    <input class="valeurQuantite" type="text" value="1">
-                                    <span class="plus"><img class="imagePlus changeQuantite" src="./photos/plus.png"></span>
-                                </div>
-                                <p class="prix">Prix unitaire TTC (en €) : <span class="prixUnitaire">10</span></p>
-                                <input class="boutonEnre" type="button" value="Enregistrer longueur">
-                            </div>
-                        </div>
-                        </br>
-                        <div class="article">
-                            <p class="boutonDev">Réduire Taille</p>
-                            <div class="plusMoins boutonDetail">
-                                <hr class="hrArticle">
-                                <p class="descMesure">Longueur (cm)</p>
-                                <input class="mesure" type="text" placeholder="Longueur (cm)"></br>
-                                <div class="quantite">
-                                    <span>Quantité : </span>
-                                    <span class="moins"><img class="imageMoins changeQuantite" src="./photos/moins.png"></span>
-                                    <input class="valeurQuantite" type="text" value="1">
-                                    <span class="plus"><img class="imagePlus changeQuantite" src="./photos/plus.png"></span>
-                                </div>
-                                <p class="prix">Prix unitaire TTC (en €) : <span class="prixUnitaire">10</span></p>
-                                <input class="boutonEnre" type="button" value="Enregistrer longueur">
-                            </div>
-                        </div>
-                        </br>
-                        <div class="article">
-                            <p class="boutonDev">Remplacer Doublure</p>
-                            <div class="plusMoins boutonDetail">
-                                <hr class="hrArticle">
-                                <div class="quantite">
-                                    <span>Quantité : </span>
-                                    <span class="moins"><img class="imageMoins changeQuantite" src="./photos/moins.png"></span>
-                                    <input class="valeurQuantite" type="text" value="1">
-                                    <span class="plus"><img class="imagePlus changeQuantite" src="./photos/plus.png"></span>
-                                </div>
-                                <p class="prix">Prix unitaire TTC (en €) : <span class="prixUnitaire">10</span></p>
-                                <input class="boutonEnre" type="button" value="Enregistrer longueur">
                             </div>
                         </div>
                     </div>
-                </div>
-                <hr class="hrArticle">
-                <div>
-                    <p class="boutonSousArticle">Literie</p>
-                    <div class="plusMoinsAr plusMoins">
-                        <div class="article">
-                            <p class="boutonDev">Sur mesure</p>
-                            <div class="plusMoins boutonDetail">
-                                <hr class="hrArticle">
-                                <p class="descMesure">Longueur (cm)</p>
-                                <input class="mesure" type="text" placeholder="Longueur (cm)"></br>
-                                <p class="descMesure">Largeur (cm)</p>
-                                <input class="mesure" type="text" placeholder="Largeur (cm)"></br>
-                                <div class="quantite">
-                                    <span>Quantité : </span>
-                                    <span class="moins"><img class="imageMoins changeQuantite" src="./photos/moins.png"></span>
-                                    <input class="valeurQuantite" type="text" value="1">
-                                    <span class="plus"><img class="imagePlus changeQuantite" src="./photos/plus.png"></span>
+                    <hr class="hrArticle">
+                    <div>
+                        <p class="boutonSousArticle">Manteau</p>
+                        <div class="plusMoinsAr plusMoins">
+                            <div class="article">
+                                <p class="boutonDev">Ourlet Manche</p>
+                                <div class="plusMoins boutonDetail">
+                                    <hr class="hrArticle">
+                                    <p class="descMesure">Longueur (cm)</p>
+                                    <input class="mesure" type="text" placeholder="Longueur (cm)"></br>
+                                    <div class="quantite">
+                                        <span>Quantité : </span>
+                                        <span class="moins"><img class="imageMoins changeQuantite" src="./photos/moins.png"></span>
+                                        <input class="valeurQuantite" type="text" value="1">
+                                        <span class="plus"><img class="imagePlus changeQuantite" src="./photos/plus.png"></span>
+                                    </div>
+                                    <p class="prix">Prix unitaire TTC (en €) : <span class="prixUnitaire">10</span></p>
+                                    <input class="boutonEnre" type="button" value="Enregistrer longueur">
                                 </div>
-                                <p class="prix">Prix unitaire TTC (en €) : <span class="prixUnitaire">5</span></p>
-                                <input class="boutonEnre" type="button" value="Enregistrer longueur">
+                            </div>
+                            </br>
+                            <div class="article">
+                                <p class="boutonDev">Allonger Manche</p>
+                                <div class="plusMoins boutonDetail">
+                                    <hr class="hrArticle">
+                                    <p class="descMesure">Longueur (cm)</p>
+                                    <input class="mesure" type="text" placeholder="Longueur (cm)"></br>
+                                    <div class="quantite">
+                                        <span>Quantité : </span>
+                                        <span class="moins"><img class="imageMoins changeQuantite" src="./photos/moins.png"></span>
+                                        <input class="valeurQuantite" type="text" value="1">
+                                        <span class="plus"><img class="imagePlus changeQuantite" src="./photos/plus.png"></span>
+                                    </div>
+                                    <p class="prix">Prix unitaire TTC (en €) : <span class="prixUnitaire">20</span></p>
+                                    <input class="boutonEnre" type="button" value="Enregistrer longueur">
+                                </div>
+                            </div>
+                            </br>
+                            <div class="article">
+                                <p class="boutonDev">Réduire Taille</p>
+                                <div class="plusMoins boutonDetail">
+                                    <hr class="hrArticle">
+                                    <p class="descMesure">Longueur (cm)</p>
+                                    <input class="mesure" type="text" placeholder="Longueur (cm)"></br>
+                                    <div class="quantite">
+                                        <span>Quantité : </span>
+                                        <span class="moins"><img class="imageMoins changeQuantite" src="./photos/moins.png"></span>
+                                        <input class="valeurQuantite" type="text" value="1">
+                                        <span class="plus"><img class="imagePlus changeQuantite" src="./photos/plus.png"></span>
+                                    </div>
+                                    <p class="prix">Prix unitaire TTC (en €) : <span class="prixUnitaire">35</span></p>
+                                    <input class="boutonEnre" type="button" value="Enregistrer longueur">
+                                </div>
+                            </div>
+                            </br>
+                            <div class="article">
+                                <p class="boutonDev">Remplacer Doublure</p>
+                                <div class="plusMoins boutonDetail">
+                                    <hr class="hrArticle">
+                                    <div class="quantite">
+                                        <span>Quantité : </span>
+                                        <span class="moins"><img class="imageMoins changeQuantite" src="./photos/moins.png"></span>
+                                        <input class="valeurQuantite" type="text" value="1">
+                                        <span class="plus"><img class="imagePlus changeQuantite" src="./photos/plus.png"></span>
+                                    </div>
+                                    <p class="prix">Prix unitaire TTC (en €) : <span class="prixUnitaire">40</span></p>
+                                    <input class="boutonEnre" type="button" value="Enregistrer longueur">
+                                </div>
                             </div>
                         </div>
-                        </br>
-                        <div class="article">
-                            <p class="boutonDev">Réduire</p>
-                            <div class="plusMoins boutonDetail">
-                                <hr class="hrArticle">
-                                <p class="descMesure">Longueur (cm)</p>
-                                <input class="mesure" type="text" placeholder="Longueur (cm)"></br>
-                                <div class="quantite">
-                                    <span>Quantité : </span>
-                                    <span class="moins"><img class="imageMoins changeQuantite" src="./photos/moins.png"></span>
-                                    <input class="valeurQuantite" type="text" value="1">
-                                    <span class="plus"><img class="imagePlus changeQuantite" src="./photos/plus.png"></span>
+                    </div>
+                    <hr class="hrArticle">
+                    <div>
+                        <p class="boutonSousArticle">Ensemble</p>
+                        <div class="plusMoinsAr plusMoins">
+                            <div class="article">
+                                <p class="boutonDev">Ourlet</p>
+                                <div class="plusMoins boutonDetail">
+                                    <hr class="hrArticle">
+                                    <p class="descMesure">Longueur (cm)</p>
+                                    <input class="mesure" type="text" placeholder="Longueur (cm)"></br>
+                                    <div class="quantite">
+                                        <span>Quantité : </span>
+                                        <span class="moins"><img class="imageMoins changeQuantite" src="./photos/moins.png"></span>
+                                        <input class="valeurQuantite" type="text" value="1">
+                                        <span class="plus"><img class="imagePlus changeQuantite" src="./photos/plus.png"></span>
+                                    </div>
+                                    <p class="prix">Prix unitaire TTC (en €) : <span class="prixUnitaire">10</span></p>
+                                    <input class="boutonEnre" type="button" value="Enregistrer longueur">
                                 </div>
-                                <p class="prix">Prix unitaire TTC (en €) : <span class="prixUnitaire">10</span></p>
-                                <input class="boutonEnre" type="button" value="Enregistrer longueur">
+                            </div>
+                            </br>
+                            <div class="article">
+                                <p class="boutonDev">Allonger</p>
+                                <div class="plusMoins boutonDetail">
+                                    <hr class="hrArticle">
+                                    <p class="descMesure">Longueur (cm)</p>
+                                    <input class="mesure" type="text" placeholder="Longueur (cm)"></br>
+                                    <div class="quantite">
+                                        <span>Quantité : </span>
+                                        <span class="moins"><img class="imageMoins changeQuantite" src="./photos/moins.png"></span>
+                                        <input class="valeurQuantite" type="text" value="1">
+                                        <span class="plus"><img class="imagePlus changeQuantite" src="./photos/plus.png"></span>
+                                    </div>
+                                    <p class="prix">Prix unitaire TTC (en €) : <span class="prixUnitaire">25</span></p>
+                                    <input class="boutonEnre" type="button" value="Enregistrer longueur">
+                                </div>
+                            </div>
+                            </br>
+                            <div class="article">
+                                <p class="boutonDev">Réduire Taille</p>
+                                <div class="plusMoins boutonDetail">
+                                    <hr class="hrArticle">
+                                    <p class="descMesure">Longueur (cm)</p>
+                                    <input class="mesure" type="text" placeholder="Longueur (cm)"></br>
+                                    <div class="quantite">
+                                        <span>Quantité : </span>
+                                        <span class="moins"><img class="imageMoins changeQuantite" src="./photos/moins.png"></span>
+                                        <input class="valeurQuantite" type="text" value="1">
+                                        <span class="plus"><img class="imagePlus changeQuantite" src="./photos/plus.png"></span>
+                                    </div>
+                                    <p class="prix">Prix unitaire TTC (en €) : <span class="prixUnitaire">45</span></p>
+                                    <input class="boutonEnre" type="button" value="Enregistrer longueur">
+                                </div>
+                            </div>
+                            </br>
+                            <div class="article">
+                                <p class="boutonDev">Remplacer Doublure</p>
+                                <div class="plusMoins boutonDetail">
+                                    <hr class="hrArticle">
+                                    <div class="quantite">
+                                        <span>Quantité : </span>
+                                        <span class="moins"><img class="imageMoins changeQuantite" src="./photos/moins.png"></span>
+                                        <input class="valeurQuantite" type="text" value="1">
+                                        <span class="plus"><img class="imagePlus changeQuantite" src="./photos/plus.png"></span>
+                                    </div>
+                                    <p class="prix">Prix unitaire TTC (en €) : <span class="prixUnitaire">60</span></p>
+                                    <input class="boutonEnre" type="button" value="Enregistrer longueur">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="hrArticle">
+                    <div>
+                        <p class="boutonSousArticle">Literie</p>
+                        <div class="plusMoinsAr plusMoins">
+                            <div class="article">
+                                <p class="boutonDev">Sur mesure</p>
+                                <div class="plusMoins boutonDetail">
+                                    <hr class="hrArticle">
+                                    <p class="descMesure">Longueur (cm)</p>
+                                    <input class="mesure" type="text" placeholder="Longueur (cm)"></br>
+                                    <p class="descMesure">Largeur (cm)</p>
+                                    <input class="mesure" type="text" placeholder="Largeur (cm)"></br>
+                                    <div class="quantite">
+                                        <span>Quantité : </span>
+                                        <span class="moins"><img class="imageMoins changeQuantite" src="./photos/moins.png"></span>
+                                        <input class="valeurQuantite" type="text" value="1">
+                                        <span class="plus"><img class="imagePlus changeQuantite" src="./photos/plus.png"></span>
+                                    </div>
+                                    <p class="prix">Prix unitaire TTC (en €) : <span class="prixUnitaire">5</span></p>
+                                    <input class="boutonEnre" type="button" value="Enregistrer longueur">
+                                </div>
+                            </div>
+                            </br>
+                            <div class="article">
+                                <p class="boutonDev">Réduire</p>
+                                <div class="plusMoins boutonDetail">
+                                    <hr class="hrArticle">
+                                    <p class="descMesure">Longueur (cm)</p>
+                                    <input class="mesure" type="text" placeholder="Longueur (cm)"></br>
+                                    <div class="quantite">
+                                        <span>Quantité : </span>
+                                        <span class="moins"><img class="imageMoins changeQuantite" src="./photos/moins.png"></span>
+                                        <input class="valeurQuantite" type="text" value="1">
+                                        <span class="plus"><img class="imagePlus changeQuantite" src="./photos/plus.png"></span>
+                                    </div>
+                                    <p class="prix">Prix unitaire TTC (en €) : <span class="prixUnitaire">10</span></p>
+                                    <input class="boutonEnre" type="button" value="Enregistrer longueur">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="hrArticle">
+                    <div>
+                        <p class="boutonSousArticle">Réparation</p>
+                        <div class="plusMoinsAr plusMoins">
+                            <div class="article">
+                                <p class="boutonDev">Trou</p>
+                                <div class="plusMoins boutonDetail">
+                                    <hr class="hrArticle">
+                                    <div class="quantite">
+                                        <span>Quantité : </span>
+                                        <span class="moins"><img class="imageMoins changeQuantite" src="./photos/moins.png"></span>
+                                        <input class="valeurQuantite" type="text" value="1">
+                                        <span class="plus"><img class="imagePlus changeQuantite" src="./photos/plus.png"></span>
+                                    </div>
+                                    <p class="prix">Prix unitaire TTC (en €) : <span class="prixUnitaire">5</span></p>
+                                    <input class="boutonEnre" type="button" value="Enregistrer longueur">
+                                </div>
+                            </div>
+                            </br>
+                            <div class="article">
+                                <p class="boutonDev">Fermeture éclair</p>
+                                <div class="plusMoins boutonDetail">
+                                    <hr class="hrArticle">
+                                    <div class="quantite">
+                                        <span>Quantité : </span>
+                                        <span class="moins"><img class="imageMoins changeQuantite" src="./photos/moins.png"></span>
+                                        <input class="valeurQuantite" type="text" value="1">
+                                        <span class="plus"><img class="imagePlus changeQuantite" src="./photos/plus.png"></span>
+                                    </div>
+                                    <p class="prix">Prix unitaire TTC (en €) : <span class="prixUnitaire">5</span></p>
+                                    <input class="boutonEnre" type="button" value="Enregistrer longueur">
+                                </div>
+                            </div>
+                            <div class="article">
+                                <p class="boutonDev">Couture</p>
+                                <div class="plusMoins boutonDetail">
+                                    <hr class="hrArticle">
+                                    <div class="quantite">
+                                        <span>Quantité : </span>
+                                        <span class="moins"><img class="imageMoins changeQuantite" src="./photos/moins.png"></span>
+                                        <input class="valeurQuantite" type="text" value="1">
+                                        <span class="plus"><img class="imagePlus changeQuantite" src="./photos/plus.png"></span>
+                                    </div>
+                                    <p class="prix">Prix unitaire TTC (en €) : <span class="prixUnitaire">5</span></p>
+                                    <input class="boutonEnre" type="button" value="Enregistrer longueur">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="hrArticle">
+                    <div>
+                        <p class="boutonSousArticle">Remplacer</p>
+                        <div class="plusMoinsAr plusMoins">
+                            <div class="article">
+                                <p class="boutonDev">Fermeture éclair</p>
+                                <div class="plusMoins boutonDetail">
+                                    <hr class="hrArticle">
+                                    <div class="quantite">
+                                        <span>Quantité : </span>
+                                        <span class="moins"><img class="imageMoins changeQuantite" src="./photos/moins.png"></span>
+                                        <input class="valeurQuantite" type="text" value="1">
+                                        <span class="plus"><img class="imagePlus changeQuantite" src="./photos/plus.png"></span>
+                                    </div>
+                                    <p class="prix">Prix unitaire TTC (en €) : <span class="prixUnitaire">15</span></p>
+                                    <input class="boutonEnre" type="button" value="Enregistrer longueur">
+                                </div>
+                            </div>
+                            </br>
+                            <div class="article">
+                                <p class="boutonDev">Bouton</p>
+                                <div class="plusMoins boutonDetail">
+                                    <hr class="hrArticle">
+                                    <div class="quantite">
+                                        <span>Quantité : </span>
+                                        <span class="moins"><img class="imageMoins changeQuantite" src="./photos/moins.png"></span>
+                                        <input class="valeurQuantite" type="text" value="1">
+                                        <span class="plus"><img class="imagePlus changeQuantite" src="./photos/plus.png"></span>
+                                    </div>
+                                    <p class="prix">Prix unitaire TTC (en €) : <span class="prixUnitaire">5</span></p>
+                                    <input class="boutonEnre" type="button" value="Enregistrer longueur">
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div id="merceries" class="type">
-            <p class="boutonDev">Merceries</p>
-            <div class="plusMoins vetement type" id="choixServices">
-                <div class="article">
-                    <p class="boutonDev">Bouton</p>
-                    <div class="plusMoins boutonDetail">
-                        <hr class="hrArticle">
-                        <div class="quantite">
-                            <span>Quantité : </span>
-                            <span class="moins"><img class="imageMoins changeQuantite" src="./photos/moins.png"></span>
-                            <input class="valeurQuantite" type="text" value="1">
-                            <span class="plus"><img class="imagePlus changeQuantite" src="./photos/plus.png"></span>
+            <div id="merceries" class="type">
+                <p class="boutonDev">Merceries</p>
+                <div class="plusMoins vetement type" id="choixServices">
+                    <div class="article">
+                        <p class="boutonDev">Bouton</p>
+                        <div class="plusMoins boutonDetail">
+                            <hr class="hrArticle">
+                            <div class="quantite">
+                                <span>Quantité : </span>
+                                <span class="moins"><img class="imageMoins changeQuantite" src="./photos/moins.png"></span>
+                                <input class="valeurQuantite" type="text" value="1">
+                                <span class="plus"><img class="imagePlus changeQuantite" src="./photos/plus.png"></span>
+                            </div>
+                            <p class="prix">Prix unitaire TTC (en €) : <span class="prixUnitaire">1</span></p>
+                            <input class="boutonEnre" type="button" value="Enregistrer longueur">
                         </div>
-                        <p class="prix">Prix unitaire TTC (en €) : <span class="prixUnitaire">1</span></p>
-                        <input class="boutonEnre" type="button" value="Enregistrer longueur">
                     </div>
-                </div>
-                </br>
-                <div class="article">
-                    <p class="boutonDev">Fermeture éclair</p>
-                    <div class="plusMoins boutonDetail">
-                        <hr class="hrArticle">
-                        <div class="quantite">
-                            <span>Quantité : </span>
-                            <span class="moins"><img class="imageMoins changeQuantite" src="./photos/moins.png"></span>
-                            <input class="valeurQuantite" type="text" value="1">
-                            <span class="plus"><img class="imagePlus changeQuantite" src="./photos/plus.png"></span>
+                    </br>
+                    <div class="article">
+                        <p class="boutonDev">Fermeture éclair</p>
+                        <div class="plusMoins boutonDetail">
+                            <hr class="hrArticle">
+                            <div class="quantite">
+                                <span>Quantité : </span>
+                                <span class="moins"><img class="imageMoins changeQuantite" src="./photos/moins.png"></span>
+                                <input class="valeurQuantite" type="text" value="1">
+                                <span class="plus"><img class="imagePlus changeQuantite" src="./photos/plus.png"></span>
+                            </div>
+                            <p class="prix">Prix unitaire TTC (en €) : <span class="prixUnitaire">5</span></p>
+                            <input class="boutonEnre" type="button" value="Enregistrer longueur">
                         </div>
-                        <p class="prix">Prix unitaire TTC (en €) : <span class="prixUnitaire">5</span></p>
-                        <input class="boutonEnre" type="button" value="Enregistrer longueur">
                     </div>
-                </div>
-                </br>
-                <div class="article">
-                    <p class="boutonDev">Bobine de fil</p>
-                    <div class="plusMoins boutonDetail">
-                        <hr class="hrArticle">
-                        <div class="quantite">
-                            <span>Quantité : </span>
-                            <span class="moins"><img class="imageMoins changeQuantite" src="./photos/moins.png"></span>
-                            <input class="valeurQuantite" type="text" value="1">
-                            <span class="plus"><img class="imagePlus changeQuantite" src="./photos/plus.png"></span>
+                    </br>
+                    <div class="article">
+                        <p class="boutonDev">Bobine de fil</p>
+                        <div class="plusMoins boutonDetail">
+                            <hr class="hrArticle">
+                            <div class="quantite">
+                                <span>Quantité : </span>
+                                <span class="moins"><img class="imageMoins changeQuantite" src="./photos/moins.png"></span>
+                                <input class="valeurQuantite" type="text" value="1">
+                                <span class="plus"><img class="imagePlus changeQuantite" src="./photos/plus.png"></span>
+                            </div>
+                            <p class="prix">Prix unitaire TTC (en €) : <span class="prixUnitaire">5</span></p>
+                            <input class="boutonEnre" type="button" value="Enregistrer longueur">
                         </div>
-                        <p class="prix">Prix unitaire TTC (en €) : <span class="prixUnitaire">5</span></p>
-                        <input class="boutonEnre" type="button" value="Enregistrer longueur">
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
-
-    <div id="recap">
-        <h4 id="client">Client
-        </h4>
-        <div id="recapCommande">
-            <div id="totalTTC">
+    <div id="priseClient">
+        <div id="recap">
+            <h4 id="client">Client
+            </h4>
+            <div id="recapCommande">
+                <div id="totalTTC">
+                </div>
             </div>
+            <input id="boutonEnreCom" type="submit" value="Enregistrer la commande">
         </div>
-        <input id="boutonEnreCom" type="submit" value="Enregistrer la commande">
     </div>
 
 </body>

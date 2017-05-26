@@ -71,7 +71,7 @@ $(document).ready(function() {
                 date: $('#date').val()
             };
             //On va insérer toutes ces informations dans des tableaux
-            var nom = $('<ul><li id="nomP"></li><li id="prenomP"></li><li id="dateP"></li></ul><span id="nouvClient">Nouveau client?</span>');
+            var nom = $('<ul id="enreClient"><li id="nomP"></li><li id="prenomP"></li><li id="dateP"></li></ul><span id="nouvClient">Nouveau client?</span>');
             nom.find('#nomP').text("Nom du client : " + client.nom.toUpperCase());
             nom.find('#prenomP').text("Prénom du client : " + client.prenom.toUpperCase());
             nom.find('#dateP').text("Date de dépôt : " + client.date);
@@ -219,11 +219,13 @@ $(document).ready(function() {
             $(this).css('border', '1px solid green');
             $(this).addClass('correcte');
             $(this).removeClass('incorrecte');
+            $(this).removeClass('rien');
         } else {
             //Sinon si c'est incorrecte alors on met en rouge le champ texte
             $(this).css('border', '1px solid red');
             $(this).addClass('incorrecte');
             $(this).removeClass('correcte');
+            $(this).removeClass('rien');
         }
     });
 
@@ -231,7 +233,7 @@ $(document).ready(function() {
     $('#merceries .boutonEnre').click(function(e) {
         console.log("Bouton enregistré cliqué");
         //On vérifie que la quantité est bonne
-        if ($(this).parent().find('.valeurQuantite').val() <= 0) {
+        if ($(this).parent().find('.mesure').hasClass('incorrecte') || $(this).parent().find('.mesure').hasClass('rien')) {
             alert("Erreur! La quantité que vous avez rentré est incorrecte.");
             return;
         }
@@ -263,7 +265,7 @@ $(document).ready(function() {
     $('#services .boutonEnre').click(function(e) {
         console.log("Bouton enregistré cliqué");
         //On regarde si tous les messages d'erreurs sont visibles ou non
-        if ($(this).hasClass('incorrecte')) {
+        if ($(this).parent().find('.mesure').hasClass('incorrecte') || $(this).parent().find('.mesure').hasClass('rien')) {
             //Si il y a au moins un message d'erreur qui est visible alors on informe l'utilisateur
             alert("Erreur! Les mesures que vous avez rentré sont soit incorrecte, soit incomplète.");
             return;

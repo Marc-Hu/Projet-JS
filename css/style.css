@@ -19,7 +19,7 @@ Saisie d'un client
 }
 
 .rien {
-    border: 2px solid #78909c;
+    border: 3px solid #78909c;
     border-radius: 5px;
     height: 25px;
 }
@@ -41,6 +41,11 @@ input {
     margin-top: 10px;
 }
 
+p,
+.recapArticle li,
+span{
+    font-size: 20px;
+}
 
 /*
 Récapitulatif commande
@@ -119,6 +124,10 @@ Récapitulatif commande
     margin-left: 30%;
 }
 
+#nouvClient{
+    font-size : 25px;
+}
+
 
 /*
 Article
@@ -184,9 +193,14 @@ Article
 }
 
 .type {
-    width: 250px;
+    width: 300px;
 }
 
+#enreClient{
+    padding : 0px;
+    margin :0px;
+    font-size: 30px;
+}
 
 /*
 Forme curseur
@@ -211,13 +225,13 @@ Saisie incorecte ou correcte
 */
 
 .correcte {
-    border: 2px solid #81c784;
+    border: 3px solid #81c784;
     border-radius: 5px;
     height: 25px;
 }
 
 .incorrecte {
-    border: 2px solid #ef5350;
+    border: 3px solid #ef5350;
     border-radius: 5px;
     height: 25px;
 }

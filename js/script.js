@@ -3,30 +3,6 @@ $(document).ready(function() {
     //On cache tous les formulaires
     console.log("Le document est pret");
 
-    //Section saisie d'un client, lorsque la souris passe dans la zone 
-    $('#formClient').mouseover(function(e) {
-        //On récupère les informations du client
-        var client = {
-            nom: $('#nom').val(),
-            prenom: $('#prenom').val(),
-            date: $('#date').val()
-        };
-        //Et on regarde si ils sont correcte
-        if (/^[a-zA-Z]+[\-]*[a-zA-Z]*$/.test(client.nom) && client.nom.length < 20) {
-            $('#nom').addClass('correcte');
-            $('#nom').removeClass('rien');
-        }
-        if (/^[a-zA-Z]+[\-]*[a-zA-Z]*$/.test(client.prenom) && client.nom.length < 20) {
-            $('#prenom').addClass('correcte');
-            $('#prenom').removeClass('rien');
-        }
-        if (/^[0-3][0-9]\/[0-1][0-9]\/2017$/.test(client.date) && client.date.length == 10) {
-            $('#date').addClass('correcte');
-            $('#date').removeClass('rien');
-        }
-        //Cette fonction permet de palier au refresh f5
-    });
-
     //Section client, lorsqu'on appuie sur une touche dans le formulaire
     $('#formClient .client').keyup(function(e) {
         console.log("touche appuyé dans le formulaire client");
@@ -362,3 +338,27 @@ $(document).ready(function() {
 
     console.log("La mise en place est finie. En attente d'événements...");
 });
+
+// //Section saisie d'un client, lorsque la souris passe dans la zone 
+    // $('#formClient').mouseover(function(e) {
+    //     //On récupère les informations du client
+    //     var client = {
+    //         nom: $('#nom').val(),
+    //         prenom: $('#prenom').val(),
+    //         date: $('#date').val()
+    //     };
+    //     //Et on regarde si ils sont correcte
+    //     if (/^[a-zA-Z]+[\-]*[a-zA-Z]*$/.test(client.nom) && client.nom.length < 20) {
+    //         $('#nom').addClass('correcte');
+    //         $('#nom').removeClass('rien');
+    //     }
+    //     if (/^[a-zA-Z]+[\-]*[a-zA-Z]*$/.test(client.prenom) && client.nom.length < 20) {
+    //         $('#prenom').addClass('correcte');
+    //         $('#prenom').removeClass('rien');
+    //     }
+    //     if (/^[0-3][0-9]\/[0-1][0-9]\/2017$/.test(client.date) && client.date.length == 10) {
+    //         $('#date').addClass('correcte');
+    //         $('#date').removeClass('rien');
+    //     }
+    //     //Cette fonction permet de palier au refresh f5
+    // });

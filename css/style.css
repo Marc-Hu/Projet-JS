@@ -3,9 +3,9 @@ Saisie d'un client
 */
 
 #infoG {
-    width: 45%;
+    width: 40%;
     float: left;
-    margin-left: 5%;
+    margin-left: 10%;
 }
 
 #formClient {
@@ -56,9 +56,9 @@ Récapitulatif commande
 }
 
 #recap {
-    width: 45%;
+    width: 40%;
     float: right;
-    margin-right: 5%;
+    margin-right: 10%;
     font-size: 25px;
     display: inline-block;
     text-align: center;
@@ -67,6 +67,7 @@ Récapitulatif commande
 .valeurQuantite {
     width: 7%;
     text-align: center;
+    margin: 0px;
 }
 
 .croixSuppr {
@@ -124,11 +125,6 @@ Récapitulatif commande
     margin-left: 30%;
 }
 
-#nouvClient{
-    font-size : 25px;
-}
-
-
 /*
 Article
 */
@@ -166,6 +162,7 @@ Article
     border-radius: 20px;
     margin-top: 20px;
     background-color: #b2dfdb;
+    width: 45%;
 }
 
 #services,
@@ -193,7 +190,7 @@ Article
 }
 
 .type {
-    width: 300px;
+    width: 100%;
 }
 
 #enreClient{

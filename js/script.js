@@ -192,13 +192,11 @@ $(document).ready(function() {
         //Sa peut être un nombre entier ou décimal
         if ((/^[0-9]+$/.test(texte) || /^[0-9]+.[0-9]+$/.test(texte)) && texte.length < 5 && texte != 0) {
             //On met en vert le champ de texte et on met la classe correcte
-            $(this).css('border', '1px solid green');
             $(this).addClass('correcte');
             $(this).removeClass('incorrecte');
             $(this).removeClass('rien');
         } else {
             //Sinon si c'est incorrecte alors on met en rouge le champ texte
-            $(this).css('border', '1px solid red');
             $(this).addClass('incorrecte');
             $(this).removeClass('correcte');
             $(this).removeClass('rien');

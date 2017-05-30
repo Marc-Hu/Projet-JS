@@ -9,7 +9,7 @@ $(document).ready(function() {
         //On récupère la valeur que l'utilisateur à tapé dans la case
         var texte = $(this).val();
         //On test si celui-ci correspond bien à un nom/prénom ou à une date du type jj/mm/2017
-        if ((/^[a-zA-Z]+[\-]*[a-zA-Z]*$/.test(texte) && texte.length < 20) || (/^[0-3][0-9]\/[0-1][0-9]\/2017$/.test(texte) && texte.length == 10)) {
+        if ((/^[a-zA-Z]+[\-]*[a-zA-Z]*$/.test(texte) && texte.length < 20) || (/^[0-3][0-9]\/[0-1][0-9]\/201[7-9]$/.test(texte) && texte.length == 10)) {
             //Si le texte qui est dans la case correspond à une des conditions au dessus alors met en vert le champ texte
             $(this).addClass('correcte');
             $(this).removeClass('incorrecte');
@@ -206,8 +206,9 @@ $(document).ready(function() {
     //Section mercerie, si on enregistre une commande
     $('#merceries .boutonEnre').click(function(e) {
         console.log("Bouton enregistré cliqué");
+        var texte = $(this).parent().find('.valeurQuantite').val();
         //On vérifie que la quantité est bonne
-        if ($(this).parent().find('.mesure').hasClass('incorrecte') || $(this).parent().find('.mesure').hasClass('rien')) {
+        if (parseFloat(texte)!=parseInt(texte)) {
             alert("Erreur! La quantité que vous avez rentré est incorrecte.");
             return;
         }
@@ -238,13 +239,15 @@ $(document).ready(function() {
     //Section Services, un des bouton d'enregistrement est cliqué
     $('#services .boutonEnre').click(function(e) {
         console.log("Bouton enregistré cliqué");
+        texte=$(this).parent().find('.valeurQuantite').val();
+        console.log(texte);
         //On regarde si tous les messages d'erreurs sont visibles ou non
         if ($(this).parent().find('.mesure').hasClass('incorrecte') || $(this).parent().find('.mesure').hasClass('rien')) {
             //Si il y a au moins un message d'erreur qui est visible alors on informe l'utilisateur
             alert("Erreur! Les mesures que vous avez rentré sont soit incorrecte, soit incomplète.");
             return;
         }
-        if ($(this).parent().find('.valeurQuantite').val() <= 0) {
+        if ($(this).parent().find('.valeurQuantite').val() <= 0 || parseFloat(texte)!=parseInt(texte)) {
             alert("Erreur! La quantité que vous avez rentré est incorrecte.");
             return;
         }

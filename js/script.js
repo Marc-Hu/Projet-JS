@@ -304,11 +304,11 @@ $(document).ready(function() {
         //Si l'utilisateur clique sur cancel alors on return
         if (modif === null)
             return;
-        if (modif == "" || !(/^[1-9]+$/.test(modif)) || modif < 1) {
-            alert("Erreur! Valeur incorrecte!");
-            return;
-        } else
+        if(/^[1-9]+$/.test(modif))
             $(this).parent().find('.valeurMesure').text(modif);
+        else{
+            alert("Erreur! Valeur incorrecte!");
+        }
     });
 
     //Section récapitulatif du client, si l'utilisateur veut un nouveau client

@@ -44,7 +44,7 @@ input {
 p,
 .recapArticle li,
 span{
-    font-size: 20px;
+    font-size: 25px;
 }
 
 /*
@@ -65,7 +65,8 @@ Récapitulatif commande
 }
 
 .valeurQuantite {
-    width: 7%;
+    height: 15px;
+    width: 25px;
     text-align: center;
     margin: 0px;
 }
@@ -73,10 +74,6 @@ Récapitulatif commande
 .croixSuppr {
     width: 25px;
     height: 25px;
-}
-
-#recapCommande li {
-    font-size: 15px;
 }
 
 #custom,
@@ -265,6 +262,7 @@ BOUTONS
     margin-bottom: 10px;
     height: 40px;
     display: none;
+    font-size: 70%;
 }
 
 #boutonOK {
